@@ -7,11 +7,14 @@ import Login from './Containers/Login.jsx/Login';
 import Register from './Containers/Register/Register';
 import UserProfile from './Containers/UserProfile/UserProfile';
 import ErrNotFound from './Containers/ErrNotFound/ErrNotFound';
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function App() {
   return (
     <BrowserRouter>
     <div className="App">
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/addBlog" element={<AddBlog />} />
