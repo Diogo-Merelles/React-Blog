@@ -11,6 +11,7 @@
 
 .header-name, .header-categories, .nav-icon {
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .header-name:hover, .header-categories:hover, .nav-icon:hover {
@@ -25,3 +26,6 @@
     padding-right: 1em;
 }
 
+.seachInput:focus {
+    
+}
