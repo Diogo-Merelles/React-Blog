@@ -9,13 +9,13 @@
     margin-bottom: 10em;
 }
 
-.header-name:hover {
-    color: #89ABE3FF;
-
+.header-name, .header-categories, .nav-icon {
+    transition: 0.3s;
 }
 
-.header-categories:hover {
+.header-name:hover, .header-categories:hover, .nav-icon:hover {
     color: #89ABE3FF;
+    opacity: 1;
 
 }
 
@@ -25,6 +25,3 @@
     padding-right: 1em;
 }
 
-.nav-icon:hover {
-    color: #89ABE3FF;
-}
