@@ -1,12 +1,12 @@
 .header-container {
     align-items: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100vw;
-    padding-left: 8em;
-    padding-right: 8em;
+    /* padding-left: 8em;
+    padding-right: 8em; */
     margin-top: 2em;
-    margin-bottom: 10em;
+    margin-bottom: 8em;
 }
 
 .header-name, .header-categories, .nav-icon {

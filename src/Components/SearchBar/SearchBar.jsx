@@ -21,6 +21,7 @@ const SearchBar = ({isOpen, onClick}) => {
       <div className="search-rigth-side">
         <FontAwesomeIcon className="magnify-icon" icon={faMagnifyingGlass} />
       <input
+        className="searchBar"
         type="text"
         placeholder="Search"
         onChange={handleChange}
