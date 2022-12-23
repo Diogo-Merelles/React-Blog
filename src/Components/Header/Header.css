@@ -2,7 +2,7 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 100vw;
     padding-left: 8em;
     padding-right: 8em;
     margin-top: 2em;
@@ -24,8 +24,4 @@
     font-size: x-large;
     padding-left: 1em;
     padding-right: 1em;
-}
-
-.seachInput:focus {
-    
 }

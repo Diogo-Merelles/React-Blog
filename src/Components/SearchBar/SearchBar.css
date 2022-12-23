@@ -1,0 +1,39 @@
+.close-icon, .magnify-icon {
+    margin-right: 2em;
+    font-size: xxx-large;
+    background: transparent;
+}
+
+.magnify-icon {
+    margin-left: 2em;
+}
+
+.search-rigth-side {
+    background: transparent;
+}
+
+.searchbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 1;
+    left:0;
+    width: 100%;
+    background-color: white;
+    padding: 24px 0;
+    top: 0;
+    background-color: #FCF6F5FF;
+}
+
+.searchbar-container.opened {
+    opacity: 1;  
+    transform: translateY(0px);
+    height: 165px;
+    transition: transform 0.3s linear;
+}
+
+.searchbar-container.closed {
+    transform: translateY(-100px);
+    transition: transform 0.3s linear;  
+}

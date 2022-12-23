@@ -9,11 +9,13 @@ import UserProfile from './Containers/UserProfile/UserProfile';
 import ErrNotFound from './Containers/ErrNotFound/ErrNotFound';
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import Header from './Components/Header/Header';
 
 function App() {
   return (
     <BrowserRouter>
     <div className="App">
+      <Header />
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
