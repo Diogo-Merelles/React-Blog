@@ -3,15 +3,18 @@
     display: flex;
     justify-content: space-around;
     width: 100vw;
-    /* padding-left: 8em;
-    padding-right: 8em; */
     margin-top: 2em;
-    margin-bottom: 8em;
+    margin-bottom: 6em;
 }
 
 .header-name, .header-categories, .nav-icon {
     transition: 0.3s;
     cursor: pointer;
+    
+}
+
+.header-categories, .header-nav {
+    width: 288px;
 }
 
 .header-name:hover, .header-categories:hover, .nav-icon:hover {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import {
   faIdCard,
@@ -9,26 +9,14 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
-import Home from "../../Containers/Home/Home";
 
-const Header = () => {
+const Header = ({children, Wrapper = 'div'}) => {
   let navigate = useNavigate();
   
   const [searchIsActive, setSearchIsActive] = useState(false);
   const toggleSearch = (ev) => {
-    setSearchIsActive(true);
+    setSearchIsActive(!searchIsActive);
   };
-
-  useEffect(() => {
-  if(!searchIsActive) {
-    <Home style={{opacity: 1}}/>
-
-
-  } else {
-    <Home style={{opacity: 0.5}}/>
-
-  }
-}, [searchIsActive])
 
   return (
     <div className="header-container">
@@ -87,6 +75,7 @@ const Header = () => {
           className="nav-icon"
           icon={faMagnifyingGlass}
           onClick={toggleSearch}
+          
         />
         {/* user profile / login / register / search */}
       </div>
