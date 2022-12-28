@@ -1,0 +1,16 @@
+.categoryDropdown {
+    width: 100%;
+    border-radius: 4px;
+    height: 2em;
+    border-color: #89ABE3FF;;
+}
+
+.btn {
+    font-size: xx-large;
+}
+
+
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+}

@@ -1,16 +1,25 @@
 .header-container {
     align-items: center;
     display: flex;
+    align-self: flex-start;
+    position: sticky;
+    top: 0;
     justify-content: space-around;
     width: 100vw;
     margin-top: 2em;
     margin-bottom: 6em;
+    z-index: 1;
 }
 
 .header-name, .header-categories, .nav-icon {
     transition: 0.3s;
     cursor: pointer;
+    font-weight: 600;
     
+}
+
+.header-categories {
+    font-size: x-large;
 }
 
 .header-categories, .header-nav {
