@@ -1,6 +1,6 @@
 import Reac, { useState } from "react";
 import axios from "axios";
-import { MDBValidation, MDBInput, MDBBtn, MDBTextArea, MDBFile } from "mdb-react-ui-kit";
+import { MDBValidation, MDBInput, MDBBtn, MDBTextArea, MDBFile, MDBValidationItem} from "mdb-react-ui-kit";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "./AddBlog.css"
@@ -30,9 +30,8 @@ const AddBlog = () => {
   const onUploadImage = (file) => {};
 
   const onCategoryChange = () => {};
+
   return (
-    <form >
-    <div className="wrapper">
     <MDBValidation className="row-g3" noValidate onSubmit={handleSubmit}>
       <p className="fs-2 fw-bold">Add Blog</p>
       <div
@@ -49,6 +48,8 @@ const AddBlog = () => {
       >
         <MDBInput
           value={title || ""}
+          id="title"
+          className="form-control"
           name="title"
           type="text"
           onChange={onInputChange}
@@ -57,6 +58,7 @@ const AddBlog = () => {
           validation="You need to provide a title"
           invalid
         />
+        
         <br />
         <MDBTextArea
           value={description || ""}
@@ -79,6 +81,7 @@ const AddBlog = () => {
         />
         <br />
         <select
+          required
           className="categoryDropdown"
           onChange={onCategoryChange}
           value={category}
@@ -102,8 +105,6 @@ const AddBlog = () => {
         </div>
       </div>
     </MDBValidation>
-    </div>
-    </form>
   );
 };
 
