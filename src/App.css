@@ -1,7 +1,9 @@
 .App {
   text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #FCF6F5FF;
 }
 
-
-
+html {
+  background-color: #FCF6F5FF;
+}

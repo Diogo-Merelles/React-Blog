@@ -9,7 +9,9 @@
     margin-top: 2em;
     margin-bottom: 6em;
     z-index: 1;
+
 }
+
 
 .header-name, .header-categories, .nav-icon {
     transition: 0.3s;
