@@ -2,14 +2,16 @@
     align-items: center;
     display: flex;
     align-self: flex-start;
+    overflow: hidden;
     position: sticky;
     top: 0;
     justify-content: space-around;
     width: 100vw;
+    overflow: hidden;
     margin-top: 2em;
     margin-bottom: 6em;
     z-index: 1;
-
+  
 }
 
 

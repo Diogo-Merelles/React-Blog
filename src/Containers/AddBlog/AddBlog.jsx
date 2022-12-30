@@ -8,7 +8,7 @@ import {
   MDBFile,
   MDBValidationItem,
 } from "mdb-react-ui-kit";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "./AddBlog.css";
 
@@ -33,10 +33,22 @@ const AddBlog = () => {
   const handleSubmit = (ev) => {};
 
   const onInputChange = (ev) => {
-    setFormValue({ ...formValue, [ev.target.name]: ev.target.value });
+    setFormValue(ev.target.value);
   };
-
-  const onUploadImage = (file) => {};
+  
+  const onUploadImage = (file) => {
+    let formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "wuegilen");
+    axios
+      .post("http://api.cloudinary.com/v1_1/dxaepqu6q/image/upload", formData)
+      .then((res) => {
+        toast.info("Image uploaded Successfully!")
+        setFormValue({...formValue, imageUrl: res.data.url})
+      }).catch((error) => {
+        toast.error("Something went terribly wrong :( Try again later");
+      }) ;
+  };
 
   const onCategoryChange = () => {};
 
@@ -51,8 +63,8 @@ const AddBlog = () => {
           onChange={onInputChange}
           required
           label="Title"
-          validation="You need to provide a title"
-          invalid
+          validation="You need to provide a title!"
+          invalid="true"
         />
 
         <br />
@@ -61,17 +73,17 @@ const AddBlog = () => {
           onChange={onInputChange}
           required
           label="Description"
-          validation="You need to provide a description"
+          validation="You need to provide a description!"
           rows={4}
         />
         <br />
         <MDBFile
-          label="Image for your blog"
+          label="Choose an image for your blog!"
           type="file"
-          onChange={(ev) => onUploadImage(ev.target.files)}
+          onChange={(ev) => onUploadImage(ev.target.files[0])}
           required
-          validation="You need to provide an image"
-          invalid
+          validation="You need to provide an image!"
+          invalid="true"
         />
         <br />
         <select

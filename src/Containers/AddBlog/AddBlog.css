@@ -3,7 +3,6 @@
     border-radius: 4px;
     height: 2em;
     border-color: #89ABE3FF;
-    ;
 }
 .btn {
     font-size: xx-large;
@@ -14,7 +13,6 @@
     justify-content: center;
 }
 .form-wrapper {
-    z-index: 5;
     display: flex;
     flex-direction: column;
     justify-content: center;
