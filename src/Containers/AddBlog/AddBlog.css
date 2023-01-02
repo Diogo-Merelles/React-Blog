@@ -12,13 +12,9 @@
     display: flex;
     justify-content: center;
 }
-.form-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto;
-    padding: 2em;
-    max-width: 26em;
-    align-content: center;
-}
 
+.categoryErr {
+    color: red;
+    text-align: left;
+    font-size: 14px;
+}

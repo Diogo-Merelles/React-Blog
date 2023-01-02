@@ -6,7 +6,6 @@ import {
   MDBBtn,
   MDBTextArea,
   MDBFile,
-  MDBValidationItem,
 } from "mdb-react-ui-kit";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -30,12 +29,43 @@ const AddBlog = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (ev) => {};
+  const getDate = () => {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, "0");
+    let mm = String(today.getMonth() + 1).padStart(2, "0");
+    let yyyy = today.getFullYear();
+
+    today = dd + "/" + mm + "/" + yyyy;
+    return today;
+  };
+
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    if (!category) {
+      setCategoryErr("Please select a category");
+    }
+    if (title && description && imageUrl && category) {
+      const currentDate = getDate();
+      const updatedBlogDate = { ...formValue, date: currentDate };
+      const response = await axios.post(
+        "http://localhost:5000/blogs",
+        updatedBlogDate
+        );
+      if (response.status === 201) {
+        toast.success("Successfully created a new Blog!");
+      } else {
+        toast.error("Something went wrong :( Try again later");
+      }
+      setFormValue({ title: "", description: "", category: "", imageUrl: "" });
+      navigate("/");
+    }
+  };
 
   const onInputChange = (ev) => {
-    setFormValue(ev.target.value);
+    let { name, value } = ev.target;
+    setFormValue({ ...formValue, [name]: value });
   };
-  
+
   const onUploadImage = (file) => {
     let formData = new FormData();
     formData.append("file", file);
@@ -43,19 +73,33 @@ const AddBlog = () => {
     axios
       .post("http://api.cloudinary.com/v1_1/dxaepqu6q/image/upload", formData)
       .then((res) => {
-        toast.info("Image uploaded Successfully!")
-        setFormValue({...formValue, imageUrl: res.data.url})
-      }).catch((error) => {
-        toast.error("Something went terribly wrong :( Try again later");
-      }) ;
+        toast.info("Image uploaded Successfully!");
+        setFormValue({ ...formValue, imageUrl: res.data.url });
+      })
+      .catch((error) => {
+        toast.error("Something went wrong :( Try again later");
+      });
   };
 
-  const onCategoryChange = () => {};
+  const onCategoryChange = (ev) => {
+    setCategoryErr(null);
+    setFormValue({ ...formValue, category: ev.target.value });
+  };
 
   return (
-    <MDBValidation className="row-g3 form" noValidate onSubmit={handleSubmit}>
+    <MDBValidation className="row g-3" onSubmit={handleSubmit}>
       <p className="fs-2 fw-bold">Add Blog</p>
-      <div className="form-wrapper">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          margin: "auto",
+          padding: "2em",
+          maxWidth: "26em",
+          alignContent: "center",
+        }}
+      >
         <MDBInput
           defaultValue={title || ""}
           name="title"
@@ -91,7 +135,6 @@ const AddBlog = () => {
           className="categoryDropdown"
           onChange={onCategoryChange}
           value={category}
-          style={{ marginBottom: "1em" }}
         >
           <option>Select category</option>
           {options.map((option, index) => (
@@ -100,6 +143,7 @@ const AddBlog = () => {
             </option>
           ))}
         </select>
+        {categoryErr && <div className="categoryErr">{categoryErr}</div>}
         <br />
         <div className="btn-wrapper">
           <MDBBtn
