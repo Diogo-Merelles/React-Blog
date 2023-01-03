@@ -50,7 +50,8 @@ const AddBlog = () => {
       const response = await axios.post(
         "http://localhost:5000/blogs",
         updatedBlogDate
-        );
+      );
+
       if (response.status === 201) {
         toast.success("Successfully created a new Blog!");
       } else {
@@ -114,10 +115,13 @@ const AddBlog = () => {
         <br />
         <MDBTextArea
           defaultValue={description || ""}
+          name="description"
+          type="text"
           onChange={onInputChange}
           required
           label="Description"
           validation="You need to provide a description!"
+          invalid="true"
           rows={4}
         />
         <br />
