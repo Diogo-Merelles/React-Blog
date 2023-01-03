@@ -11,8 +11,6 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "./AddBlog.css";
 
-// wuegilen
-
 const initialState = {
   title: "",
   description: "",
@@ -20,7 +18,7 @@ const initialState = {
   imageUrl: "",
 };
 
-const options = ["Travel", "Fashion", "Fitness", "Sports", "Food", "Tech"];
+const options = ["Historic Buildings", "Sights", "Food", "Wine House", "Douro River", "Art"];
 
 const AddBlog = () => {
   const [formValue, setFormValue] = useState(initialState);
