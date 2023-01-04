@@ -1,0 +1,11 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+}
+
+.homeShowBlog {
+    display: flex;
+    margin: 1em;
+    width: 60vw;
+    flex-wrap: wrap;
+}

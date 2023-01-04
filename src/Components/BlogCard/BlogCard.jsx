@@ -29,14 +29,18 @@ const BlogCard = ({
         </span>
       </div>
       <div className="card-icons">
-        <Link to={`/editBlog/${id}`}>
-          <FontAwesomeIcon icon={faPenToSquare} />
-        </Link>
-        <FontAwesomeIcon
-          color="red"
-          icon={faTrash}
-          onClick={() => deleteHandler(id)}
-        />
+        <div className="edit-icon">
+          <Link to={`/editBlog/${id}`}>
+            <FontAwesomeIcon icon={faPenToSquare} />
+          </Link>
+        </div>
+        <div className="trash-icon">
+          <FontAwesomeIcon
+            color="red"
+            icon={faTrash}
+            onClick={() => deleteHandler(id)}
+          />
+        </div>
       </div>
     </div>
   );
