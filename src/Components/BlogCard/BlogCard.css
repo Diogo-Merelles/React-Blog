@@ -1,0 +1,21 @@
+.cardDesign {
+    min-height: 450px;
+    max-width: 30%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    margin: 0.4em;
+    border: 2px solid red;
+    background-color: lightgray;
+    overflow: hidden;
+    border-radius: 0.5em;
+}
+
+.card-image {
+    height: 30vh;
+    width: 100%;
+}
+/* img {
+    height: 400px;
+    width: 100%;
+} */

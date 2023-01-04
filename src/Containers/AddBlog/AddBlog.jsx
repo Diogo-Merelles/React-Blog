@@ -123,6 +123,16 @@ const AddBlog = () => {
           rows={4}
         />
         <br />
+        {/* <MDBInput 
+          defaultValue={imageUrl || ""}
+          name="imageUrl"
+          type="url"
+          onChange={onInputChange}
+          required
+          label="Url of your image"
+          validation="You need to provide a valid url"
+          invalid="true"
+        /> */}
         <MDBFile
           label="Choose an image for your blog!"
           type="file"
