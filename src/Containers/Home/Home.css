@@ -1,11 +1,15 @@
 .home-container {
     display: flex;
-    justify-content: center;
+    justify-content: center;  
 }
 
 .homeShowBlog {
     display: flex;
     margin: 1em;
-    width: 60vw;
+    width: 85vw;
     flex-wrap: wrap;
+    border: 8px solid rgb(137, 171, 227, 0.4);
+    padding: 1em;
+    justify-content: space-between;
 }
+

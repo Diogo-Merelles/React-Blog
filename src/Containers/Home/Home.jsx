@@ -7,7 +7,17 @@ import BlogCard from "../../Components/BlogCard/BlogCard";
 const Home = () => {
   const [data, setData] = useState([]);
 
-  const deleteHandler = () => {};
+  const deleteHandler = async (id) => {
+    if (window.confirm("All Blog info will be deleted. Are you sure?")) {
+      const response = await axios.delete(`http://localhost:5000/blogs/${id}`);
+      if (response.status === 200) {
+        toast.success("Blog deleted successfully");
+        bringBlogData();
+      } else {
+        toast.error("Something went wrong, try again later");
+      }
+    }
+  };
 
   const showMore = (string) => {
     if (string.length > 50) {

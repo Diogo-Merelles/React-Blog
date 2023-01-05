@@ -1,6 +1,6 @@
 .cardDesign {
-    min-height: 400px;
-    max-width: 30%;
+    min-height: 450px;
+    max-width: 22%;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -9,11 +9,12 @@
     backface-visibility: hidden;
     margin-right: 1em;
     margin-bottom: 1em;
+    box-shadow: 1px 1px 4px 1px;
 }
 
 .cardDesign:hover {
-    -webkit-transform: scale(1.015) translateZ(0) perspective(1px);
-    transform: scale(1.015) translateZ(0) perspective(1px);
+    -webkit-transform: scale(1.025) translateZ(0) perspective(1px);
+    transform: scale(1.025) translateZ(0) perspective(1px);
     box-shadow: 0 10px 50px -5px #ccc;
     transition: 0.3s ease-in-out;
     -webkit-backface-visibility: hidden;
@@ -34,6 +35,8 @@
 
 .card-title, .card-description, .card-footer, .card-icons {
     margin-top: 0.5em;
+    padding: 0.6em;
+    margin: 0.2em;
 }
 
 .card-title {
@@ -41,11 +44,21 @@
     font-weight: bold;
 }
 
+.card-bottom {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: auto; /* this always puts the footer element at the bottom of the card container*/
+}
+
 .card-footer {
     background: #89ABE3FF !important;
     border-radius: 16px;
     font-weight: bolder;
     width: fit-content;
-    align-self: center;
     font-family: 'Times New Roman', Times, serif;
+}
+
+.trash-icon, .edit-icon {
+    cursor: pointer;
 }

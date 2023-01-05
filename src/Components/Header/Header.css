@@ -1,14 +1,16 @@
 .header-container {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    height: 143px;
+    overflow: hidden;
     align-items: center;
     display: flex;
-    position: sticky;
     justify-content: space-around;
-    top: 0;
     width: 100vw;
-    padding-top: 2em;
-    padding-bottom: 6em;
-    z-index: 1;  
-    overflow: hidden;
+    padding: 2em 2em 0.5em 2em;
+    margin: 0px 0;
+    background-color: #FCF6F5FF;
 }
 
 
