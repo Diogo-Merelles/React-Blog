@@ -65,6 +65,7 @@ const AddBlog = () => {
     setFormValue({ ...formValue, [name]: value });
   };
 
+
   const onUploadImage = (file) => {
     let formData = new FormData();
     formData.append("file", file);
@@ -86,9 +87,9 @@ const AddBlog = () => {
   };
 
   return (
-    <MDBValidation className="row g-3" onSubmit={handleSubmit}>
+    <MDBValidation className="row g-3" onSubmit={handleSubmit} style={{marginTop: "3em"}}>
       <p className="fs-2 fw-bold">Add Blog</p>
-      <div
+      <div className="layout"
         style={{
           display: "flex",
           flexDirection: "column",
@@ -127,7 +128,7 @@ const AddBlog = () => {
           defaultValue={imageUrl || ""}
           name="imageUrl"
           type="url"
-          onChange={onInputChange}
+          onChange={onUploadImage}
           required
           label="Url of your image"
           validation="You need to provide a valid url"

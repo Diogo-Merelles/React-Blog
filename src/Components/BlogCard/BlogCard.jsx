@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { } from "react";
 import "./BlogCard.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import Modal from "../Modal/Modal";
 
 const BlogCard = ({
   title,
@@ -15,7 +14,8 @@ const BlogCard = ({
   deleteHandler,
   showMore,
 }) => {
-  const [openModal, setOpenModal] = useState(false);
+
+  // const [openModal, setOpenModal] = useState(false);
 
   return (
     <div className="cardDesign">
@@ -42,10 +42,7 @@ const BlogCard = ({
             <FontAwesomeIcon
               color="#D70040"
               icon={faTrash}
-              onClick={() => (
-                <Modal open={openModal} onClose={() => setOpenModal(false)} />
-              )}
-              // onClick={() => deleteHandler(id)}
+              onClick={() => deleteHandler(id)}
             />
           </div>
         </div>

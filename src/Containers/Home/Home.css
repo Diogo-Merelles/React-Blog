@@ -10,6 +10,7 @@
     flex-wrap: wrap;
     border: 8px solid rgb(137, 171, 227, 0.4);
     padding: 1em;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 2em;
 }
 
