@@ -1,8 +1,9 @@
-import React, { } from "react";
+import React, {useState} from "react";
 import "./BlogCard.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+// import Modal from "../Modal/Modal";
 
 const BlogCard = ({
   title,
@@ -12,10 +13,15 @@ const BlogCard = ({
   category,
   date,
   deleteHandler,
-  showMore,
+  showMore
 }) => {
 
   // const [openModal, setOpenModal] = useState(false);
+
+  // const toggleModal = () => {
+  //   setOpenModal(!openModal);
+  // };
+
 
   return (
     <div className="cardDesign">

@@ -3,9 +3,12 @@ import "./Home.css";
 import { toast } from "react-toastify";
 import axios from "axios";
 import BlogCard from "../../Components/BlogCard/BlogCard";
+import Pagination from "../../Components/Pagination/Pagination";
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [blogsPerPage] = useState(4);
 
   const deleteHandler = async (id) => {
     if (window.confirm("All Blog info will be deleted. Are you sure?")) {
@@ -39,6 +42,14 @@ const Home = () => {
     }
   };
 
+  //Get Current Post
+  const indexOfLastBlog = currentPage * blogsPerPage;
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+  const currentBlog = data.slice(indexOfFirstBlog, indexOfLastBlog);
+
+  //change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
   return (
     <React.Fragment>
       {data.length === 0 && (
@@ -55,6 +66,7 @@ const Home = () => {
                 deleteHandler={deleteHandler}
               />
             ))}
+          <Pagination blogsPerPAge={blogsPerPage} totalBlogs={data.length} paginate={paginate} />
         </div>
       </div>
     </React.Fragment>

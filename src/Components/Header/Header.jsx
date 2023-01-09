@@ -10,11 +10,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 
-const Header = ({ children, Wrapper = "div" }) => {
+const Header = () => {
   let navigate = useNavigate();
 
   const [searchIsActive, setSearchIsActive] = useState(false);
-  const toggleSearch = (ev) => {
+  const toggleSearch = () => {
     setSearchIsActive(!searchIsActive);
   };
 
