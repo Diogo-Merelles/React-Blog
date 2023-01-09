@@ -44,12 +44,12 @@ const Header = () => {
           <h2 className="header-subtitle">Welcome to the ❤️ of Portugal! </h2>
         </div>
         <div className="header-nav">
-          <FontAwesomeIcon
+        <FontAwesomeIcon
             className="nav-icon"
-            icon={faIdCard}
+            icon={faUser}
             onClick={() =>
               setTimeout(() => {
-                navigate("/userProfile");
+                navigate("/register");
               }, 500)
             }
           />
@@ -64,10 +64,10 @@ const Header = () => {
           />
           <FontAwesomeIcon
             className="nav-icon"
-            icon={faUser}
+            icon={faIdCard}
             onClick={() =>
               setTimeout(() => {
-                navigate("/register");
+                navigate("/userProfile");
               }, 500)
             }
           />
@@ -76,7 +76,7 @@ const Header = () => {
             icon={faMagnifyingGlass}
             onClick={toggleSearch}
           />
-          {/* user profile / login / register / search */}
+          {/* user profile / register / login / search */}
         </div>
         <SearchBar isOpen={searchIsActive} onClick={setSearchIsActive} />
       </div>
