@@ -1,6 +1,6 @@
 .home-container {
     display: flex;
-    justify-content: center;  
+    justify-content: center; 
 }
 
 .homeShowBlog {
@@ -8,9 +8,16 @@
     margin: 1em;
     width: 85vw;
     flex-wrap: wrap;
-    border: 8px solid rgb(137, 171, 227, 0.4);
+    border: 8px solid rgb(137, 171, 227, 0.6);
     padding: 1em;
     justify-content: center;
     gap: 2em;
+}
+
+.welcomeHome-msg {
+    color: black;
+    font-weight: bold;
+    -webkit-text-stroke-width: 0.4px;
+    -webkit-text-stroke-color: white;
 }
 

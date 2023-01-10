@@ -53,8 +53,9 @@ const Home = () => {
   return (
     <React.Fragment>
       {data.length === 0 && (
-        <div className="noBlogFound">No blog was found</div>
+        <div className="noBlogFound">No blog was found... Try again later</div>
       )}
+      <h4 className="welcomeHome-msg">Welcome! Here you see all the blogs people wrote about the city of Porto.<br /> If you want to contribute, just go over to "Add your Blog" on the top. Have fun! :)</h4>
       <div className="home-container">
         <div className="homeShowBlog">
           {data &&

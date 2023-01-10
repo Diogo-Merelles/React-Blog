@@ -1,83 +1,115 @@
 import React, { useState } from "react";
 import "./RegisterCard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { errorCheck } from "../../Services/validate";
+import registerImg from "../../Images/clerigos.jpeg";
+import axios from "axios";
+import { toast } from "react-toastify";
+
+const initualUserState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+};
 
 const RegisterCard = () => {
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    password2: "",
-  });
+  const [formUser, setFormUser] = useState(initualUserState);
+  const { firstName, lastName, email, password } = formUser;
+  const navigate = useNavigate();
 
   const [userError, setUserError] = useState({
     firstNameError: "",
     lastNameError: "",
     emailError: "",
     passwordError: "",
-    password2Error: "",
   });
 
-  const inputHandler = (e) => {
-    setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
-  };
-
-  const errorHandler = (e) => {
-    let error = "";
-
-    error = errorCheck(e.target.name, e.target.value);
-
-    if (e.target.name === "password2") {
-      if (user.password !== user.password2) {
-        error = "Write the same password twice";
-      }
-    }
-
-    setUserError((prevState) => ({
+  const inputHandler = (ev) => {
+    setFormUser((prevState) => ({
       ...prevState,
-      [e.target.name + "Error"]: error,
+      [ev.target.name]: ev.target.value,
     }));
   };
 
+  const errorHandler = (ev) => {
+    let error = "";
+
+    error = errorCheck(ev.target.name, ev.target.value);
+
+    setUserError((prevState) => ({
+      ...prevState,
+      [ev.target.name + "Error"]: error,
+    }));
+  };
+
+  const handleSubmit = async () => {
+    // let userObj = { ...user };
+    // console.log(regObj)
+
+    // if (firstName && lastName && email && password) {
+    const response = await axios.post("http://localhost:5000/user");
+
+    if (response.status === 201) {
+      toast.success("Congratulation! You just created an account");
+    } else {
+      toast.error("Sorry, something went wrong. Try again later");
+    }
+    navigate("/login");
+    console.log("teste");
+    // }
+  };
+
   return (
-    <div className="registerLayout">
+    <form className="registerLayout" onSubmit={handleSubmit}>
       <div className="right-side-form">
+        <img
+          src={registerImg}
+          alt="Torre dos Clérigos"
+          className="register-img"
+        ></img>
+      </div>
+      <div className="left-side-form">
         <h1>Create new account</h1>
         <p>
           Already a member? <Link to="/login">Log in</Link>
         </p>
-      </div>
-      <div className="register-form">
-        <div className="registerCardMiddle">
-          <input
-            placeholder="First Name"
-            type="text"
-            name="t"
-            className="basicInput"
-            onChange={(e) => inputHandler(e)}
-            onBlur={(e) => errorHandler(e)}
-          />
-          <div className="errorMsg">{userError.firstNameError}</div>
+        <div className="register-form">
+          <div className="personalNames">
+            <input
+              placeholder="First Name"
+              type="text"
+              name="firstName"
+              required
+              value={firstName}
+              className="basicInput"
+              onChange={inputHandler}
+              onBlur={(ev) => errorHandler(ev)}
+            />
+            <div className="errorMsg">{userError.firstNameError}</div>
 
-          <input
-            placeholder="Last Name"
-            type="text"
-            name="name"
-            className="basicInput"
-            onChange={(e) => inputHandler(e)}
-            onBlur={(e) => errorHandler(e)}
-          />
-          <div className="errorMsg">{userError.firstNameError}</div>
+            <input
+              placeholder="Last Name"
+              type="text"
+              name="lastName"
+              className="basicInput"
+              required
+              value={lastName}
+              onChange={inputHandler}
+              onBlur={(ev) => errorHandler(ev)}
+            />
+            <div className="errorMsg">{userError.lastNameError}</div>
+          </div>
 
           <input
             placeholder="E-mail"
             type="email"
-            name="name"
+            name="email"
             className="basicInput"
-            onChange={(e) => inputHandler(e)}
-            onBlur={(e) => errorHandler(e)}
+            required
+            value={email}
+            onChange={inputHandler}
+            onBlur={(ev) => errorHandler(ev)}
           />
           <div className="errorMsg">{userError.emailError}</div>
 
@@ -86,23 +118,18 @@ const RegisterCard = () => {
             type="password"
             name="password"
             className="basicInput"
-            onChange={(e) => inputHandler(e)}
-            onBlur={(e) => errorHandler(e)}
+            required
+            value={password}
+            onChange={inputHandler}
+            onBlur={(ev) => errorHandler(ev)}
           />
           <div className="errorMsg">{userError.passwordError}</div>
-
-          <input
-            placeholder="Repeat password"
-            type="password"
-            name="password2"
-            className="basicInput"
-            onChange={(e) => inputHandler(e)}
-            onBlur={(e) => errorHandler(e)}
-          />
-          <div className="errorMsg">{userError.password2Error}</div>
+          <button type="submit" className="basicInput createAccBtn">
+            Create Account
+          </button>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

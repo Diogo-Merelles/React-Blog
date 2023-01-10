@@ -1,10 +1,13 @@
-import React from 'react'
-import RegisterCard from '../../Components/RegisterCard/RegisterCard'
+import React from "react";
+import RegisterCard from "../../Components/RegisterCard/RegisterCard";
+import './Register.css'
 
 const Register = () => {
   return (
-    <RegisterCard />
-  )
-}
+    <div className="registerDesign">
+      <RegisterCard />
+    </div>
+  );
+};
 
-export default Register
+export default Register;

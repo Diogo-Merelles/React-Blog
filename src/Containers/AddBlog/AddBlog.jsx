@@ -15,7 +15,7 @@ const initialState = {
   title: "",
   description: "",
   category: "",
-  imageUrl: "",
+  imageUrl: ""
 };
 
 const options = ["Historic Buildings", "Sights", "Food", "Wine House", "Douro River", "Art"];
@@ -37,8 +37,7 @@ const AddBlog = () => {
     return today;
   };
 
-  const handleSubmit = async (ev) => {
-    ev.preventDefault();
+  const handleSubmit = async () => {
     if (!category) {
       setCategoryErr("Please select a category");
     }
@@ -87,8 +86,9 @@ const AddBlog = () => {
   };
 
   return (
-    <MDBValidation className="row g-3" onSubmit={handleSubmit} style={{marginTop: "3em"}}>
-      <p className="fs-2 fw-bold">Add Blog</p>
+    <MDBValidation className="row g-3" onSubmit={handleSubmit}>
+      <p className="fs-1 fw-bold">Tell us what about your favorite thing in Porto!</p>
+      <p className="fs-3 fw-bold">Create your blog</p>
       <div className="layout"
         style={{
           display: "flex",
@@ -98,6 +98,8 @@ const AddBlog = () => {
           padding: "2em",
           maxWidth: "26em",
           alignContent: "center",
+          border: "8px solid rgb(137, 171, 227, 0.6)"
+
         }}
       >
         <MDBInput
@@ -169,7 +171,6 @@ const AddBlog = () => {
           <MDBBtn
             className="btn btn-danger btn-lg"
             style={{ marginRight: "0.8em" }}
-            onClick={() => navigate("/")}
           >
             Go back
           </MDBBtn>
