@@ -6,9 +6,7 @@ const Blog = ({blogs}) => {
   return (
     <div>
       {blogs.map(blog => (
-        <li key={blog.id}>
           <BlogCard />
-        </li>
       ))}
     </div>
   )
