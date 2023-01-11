@@ -1,7 +1,7 @@
 .header-container {
     position: sticky;
     top: 0;
-    z-index: 99;
+    z-index: 9;
     height: 143px;
     overflow: hidden;
     align-items: center;

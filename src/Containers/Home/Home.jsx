@@ -4,21 +4,23 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import BlogCard from "../../Components/BlogCard/BlogCard";
 import Pagination from "../../Components/Pagination/Pagination";
+import Modal from "../../Components/Modal/Modal";
+import areUSure from "../../Images/areUSure.png";
 
 const Home = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [blogsPerPage] = useState(4);
+  const [showDeleteModal, setShowDeteleModal] = useState(false);
+  const [currentBlogId, setCurrentBlogId] = useState(null);
 
   const deleteHandler = async (id) => {
-    if (window.confirm("All Blog info will be deleted. Are you sure?")) {
-      const response = await axios.delete(`http://localhost:5000/blogs/${id}`);
-      if (response.status === 200) {
-        toast.success("Blog deleted successfully");
-        bringBlogData();
-      } else {
-        toast.error("Something went wrong, try again later");
-      }
+    const response = await axios.delete(`http://localhost:5000/blogs/${id}`);
+    if (response.status === 200) {
+      toast.success("Blog deleted successfully");
+      bringBlogData();
+    } else {
+      toast.error("Something went wrong, try again later");
     }
   };
 
@@ -40,6 +42,8 @@ const Home = () => {
     } else {
       toast.error("Something went wrong, try again later");
     }
+    setShowDeteleModal(false);
+    setCurrentBlogId(null)
   };
 
   //Get Current Post
@@ -48,28 +52,50 @@ const Home = () => {
   const currentBlog = data.slice(indexOfFirstBlog, indexOfLastBlog);
 
   //change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  const handleDelete = (id) => {
+    setShowDeteleModal(true);
+    setCurrentBlogId(id); //
+  };
   return (
     <React.Fragment>
       {data.length === 0 && (
         <div className="noBlogFound">No blog was found... Try again later</div>
       )}
-      <h4 className="welcomeHome-msg">Welcome! Here you see all the blogs people wrote about the city of Porto.<br /> If you want to contribute, just go over to "Add your Blog" on the top. Have fun! :)</h4>
+      <h4 className="welcomeHome-msg">
+        Welcome! Here you see all the blogs people wrote about the city of
+        Porto.
+        <br /> If you want to contribute, just go over to "Add your Blog" on the
+        top. Have fun! :)
+      </h4>
       <div className="home-container">
         <div className="homeShowBlog">
-          {data &&
-            data.map((item, index) => (
-              <BlogCard
-                key={index}
-                {...item}
-                showMore={showMore}
-                deleteHandler={deleteHandler}
-              />
-            ))}
-          <Pagination blogsPerPAge={blogsPerPage} totalBlogs={data.length} paginate={paginate} />
+          {data.map((item, index) => (
+            <BlogCard
+              key={index}
+              {...item}
+              showMore={showMore}
+              deleteHandler={(id) => handleDelete(id)}
+            />
+          ))}
+          <Pagination
+            blogsPerPAge={blogsPerPage}
+            totalBlogs={data.length}
+            paginate={paginate}
+          />
         </div>
       </div>
+      <Modal
+        show={showDeleteModal}
+        title="Are you sure you want to delete your blog?"
+        confirmLabel="Delete"
+        onClose={() => setShowDeteleModal(false)}
+        onConfirm={() => deleteHandler(currentBlogId)}
+        btnType="danger"
+      >
+        <p>This action can't be undone!</p>
+      </Modal>
     </React.Fragment>
   );
 };

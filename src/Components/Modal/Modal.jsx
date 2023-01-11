@@ -1,24 +1,52 @@
-import React from 'react'
-import areUSure from '../../Images/areUSure.png'
+import React from "react";
+import ReactDOM from "react-dom";
+import {
+    MDBBtn,
+    MDBModal,
+    MDBModalDialog,
+    MDBModalContent,
+    MDBModalHeader,
+    MDBModalTitle,
+    MDBModalBody,
+    MDBModalFooter,
+  } from 'mdb-react-ui-kit';
 
-const Modal = ({open, onClose, deleteHandler, id}) => {
-    if(!open) return null;
+const PortalModal = ({ children, wrapperId }) => {
+  return ReactDOM.createPortal(children, document.getElementById(wrapperId));
+};
 
+const Modal = ({ 
+    show,
+    title,
+    children,
+    confirmLabel, 
+    onConfirm,
+    cancelLabel,
+    onClose,
+    btnType
+}) => {
   return (
-    <div className='overlay'>
-        <div className="modalContainer">
-            <img src={areUSure} alt="doubt emoji" />
-            <div className="modal-right">
-                <p onClick={onClose}>X</p>
-                <div className="modal-text">Are you sure?</div>
-                <div className="modal-button">
-                    <div onClick={deleteHandler(id)} className="confirm-button">Yes, delete</div>
-                    <div className="back-button">No, dont delete</div>
-                </div>
-            </div>
-        </div>
-    </div>
-  )
-}
+    <PortalModal wrapperId="portal-root">
+      <MDBModal show={show}  tabIndex='-1'>
+        <MDBModalDialog centered>
+          <MDBModalContent>
+            <MDBModalHeader>
+              <MDBModalTitle>{title || "Modal title"}</MDBModalTitle>
+              <MDBBtn className='btn-close' color='none' onClick={onClose}></MDBBtn>
+            </MDBModalHeader>
+           { children && <MDBModalBody>{children}</MDBModalBody>}
 
-export default Modal
+            <MDBModalFooter>
+              <MDBBtn color='secondary' onClick={onClose}>
+                {cancelLabel || "Cancel"}
+              </MDBBtn>
+              <MDBBtn color={btnType} onClick={onConfirm}>{confirmLabel || "Ok"}</MDBBtn>
+            </MDBModalFooter>
+          </MDBModalContent>
+        </MDBModalDialog>
+      </MDBModal>
+    </PortalModal>
+  );
+};
+
+export default Modal;
