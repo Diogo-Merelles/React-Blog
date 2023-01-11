@@ -1,20 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SearchBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-
+import {getSearchedBlogs} from "../../Services/apiCalls"
+import BlogCard from "../BlogCard/BlogCard";
+ 
 const SearchBar = ({isOpen, onClick}) => {
   const [searchInput, setSearchInput] = useState("");
+  const [blogs, setBlogs] = useState([]);
 
+ 
 
-  const handleChange = (ev) => {
+  const handleSearchInput = (ev) => {
     ev.preventDefault();
-    setSearchInput(ev.target.value);
+    setSearchInput((prevState) => ({
+      ...prevState, [ev.target.name]:ev.target.value,
+    }))
   };
 
-  if (searchInput.length > 0) {
-    //filter by name of blogue or category
-  }
+  useEffect(() => {
+    async function fecthData() {
+      let response = await getSearchedBlogs(searchInput);
+      console.log(response);
+      setBlogs(response.data);
+    }
+    fecthData();
+  }, [searchInput]);
+
 
   return (
     <div className={`searchbar-container ${isOpen ? "opened" : "closed"}`}>
@@ -23,11 +35,21 @@ const SearchBar = ({isOpen, onClick}) => {
       <input
         className="searchBar"
         type="text"
+        name="input"
+        id="input"
+        title="input"
         placeholder="Search"
-        onChange={handleChange}
+        onChange={(ev) => {
+          handleSearchInput(ev)
+        }}
         value={searchInput}
         />
         </div>
+        {/* {blogs?.map((blogs) => {
+          return (
+            <BlogCard key={blogs.id} />
+          )
+        })} */}
       <FontAwesomeIcon className="close-icon" icon={faXmark} onClick={() => onClick(false)} />
     </div>
   );

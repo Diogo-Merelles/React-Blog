@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import LoginCard from "../../Components/LoginCard/LoginCard";
+import './Login.css'
 
 const Login = () => {
   return (
-    <div>Login</div>
-  )
-}
+    <div className="registerDesign">
+      <LoginCard />
+    </div>
+  );
+};
 
-export default Login
+export default Login;

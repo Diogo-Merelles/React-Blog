@@ -4,3 +4,8 @@ import axios from "axios";
 //     const response = await axios.get("http://localhost:5000/blogs")
 //     return response;
 // }
+
+export const getSearchedBlogs = async (query) => {
+    const response = await axios.get("http://localhost:5000/blogs")
+    return response;
+}
