@@ -44,20 +44,20 @@ const RegisterCard = () => {
   };
 
   const handleSubmit = async () => {
-    // let userObj = { ...user };
-    // console.log(regObj)
 
-    // if (firstName && lastName && email && password) {
-    const response = await axios.post("http://localhost:5000/user");
+    if (firstName && lastName && email && password) {
+    const  updatedUser = {...formUser}
+    const response = await axios.post("http://localhost:5000/user", updatedUser);
 
     if (response.status === 201) {
       toast.success("Congratulation! You just created an account");
+
     } else {
       toast.error("Sorry, something went wrong. Try again later");
     }
+    // setFormUser({firstName: "", lastName: "", email: "", password: ""});
     navigate("/login");
-    console.log("teste");
-    // }
+    }
   };
 
   return (

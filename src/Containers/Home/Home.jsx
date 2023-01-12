@@ -3,14 +3,13 @@ import "./Home.css";
 import { toast } from "react-toastify";
 import axios from "axios";
 import BlogCard from "../../Components/BlogCard/BlogCard";
-import Pagination from "../../Components/Pagination/Pagination";
+// import Pagination from "../../Components/Pagination/Pagination";
 import Modal from "../../Components/Modal/Modal";
-import areUSure from "../../Images/areUSure.png";
 
 const Home = () => {
   const [data, setData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [blogsPerPage] = useState(4);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [blogsPerPage] = useState(4);
   const [showDeleteModal, setShowDeteleModal] = useState(false);
   const [currentBlogId, setCurrentBlogId] = useState(null);
 
@@ -46,13 +45,13 @@ const Home = () => {
     setCurrentBlogId(null)
   };
 
-  //Get Current Post
-  const indexOfLastBlog = currentPage * blogsPerPage;
-  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
-  const currentBlog = data.slice(indexOfFirstBlog, indexOfLastBlog);
+  // //Get Current Post
+  // const indexOfLastBlog = currentPage * blogsPerPage;
+  // const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+  // const currentBlog = data.slice(indexOfFirstBlog, indexOfLastBlog);
 
-  //change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  // //change page
+  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleDelete = (id) => {
     setShowDeteleModal(true);
@@ -79,11 +78,11 @@ const Home = () => {
               deleteHandler={(id) => handleDelete(id)}
             />
           ))}
-          <Pagination
+          {/* <Pagination
             blogsPerPAge={blogsPerPage}
             totalBlogs={data.length}
             paginate={paginate}
-          />
+          /> */}
         </div>
       </div>
       <Modal

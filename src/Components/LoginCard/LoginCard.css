@@ -1,0 +1,25 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 52em;
+    min-height: 22em;
+    border: 8px solid rgb(137, 171, 227, 0.6);
+    overflow: hidden;
+    text-align: center;
+    padding: 1em;
+    margin: 1em;
+}
+
+.login-input {
+    width: 30%;
+    height: 56px;
+    border-radius: 4px;
+    position: relative;
+    background-color: rgba(255,255,255,0.3);
+    transition: 0.3s all;
+    margin: 0.5em 0.5em 0.4em 0;
+    border-radius: 1em;
+}
+

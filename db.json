@@ -31,15 +31,22 @@
       "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673014153/rv0ze9abgapxpwaiixgt.png",
       "date": "06/01/2023",
       "id": 11
-    },
-    {
-      "title": "kjhfgdjkhdfgkjhdfkjghdkjfghkjdhfg",
-      "description": "sdlfjsdlkfijsdlkfjsdlkjflksdjfklsdjflksjdflkjsdlkfjsldkjfslkjdfjsdflkjsdlkjfskdljfklsdjflkjsdfljksdlkfjsdlkjffsd",
-      "category": "Wine House",
-      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673015832/jbtbn51vuc0zbta1vbwv.jpg",
-      "date": "06/01/2023",
-      "id": 12
     }
   ],
-  "user": []
+  "user": [
+    {
+      "firstName": "Name",
+      "lastName": "lastName",
+      "email": "some@mail.com",
+      "password": "qweqweqwe2",
+      "id": 1
+    },
+    {
+      "firstName": "Diogo",
+      "lastName": "fara",
+      "email": "some@mail.com",
+      "password": "jhgjhgjhg6",
+      "id": 2
+    }
+  ]
 }
