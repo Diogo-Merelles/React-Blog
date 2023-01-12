@@ -3,7 +3,7 @@ import {Routes, Route, BrowserRouter} from 'react-router-dom'
 import Home from './Containers/Home/Home';
 import AddBlog from './Containers/AddBlog/AddBlog';
 import Blog from './Containers/Blog/Blog';
-import Login from './Containers/Login.jsx/Login';
+import Login from './Containers/Login/Login';
 import Register from './Containers/Register/Register';
 import UserProfile from './Containers/UserProfile/UserProfile';
 import ErrNotFound from './Containers/ErrNotFound/ErrNotFound';

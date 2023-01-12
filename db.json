@@ -47,6 +47,20 @@
       "email": "some@mail.com",
       "password": "jhgjhgjhg6",
       "id": 2
+    },
+    {
+      "firstName": "d",
+      "lastName": "d",
+      "email": "diogo.merelles.faria@gmail.com",
+      "password": "qweqweqwe23",
+      "id": 3
+    },
+    {
+      "firstName": "Diogo",
+      "lastName": "fara",
+      "email": "diogo.merelles.faria@gmail.com",
+      "password": "aASDCXVXCVXC123435",
+      "id": 4
     }
   ]
 }
