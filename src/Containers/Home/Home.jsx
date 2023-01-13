@@ -5,19 +5,36 @@ import axios from "axios";
 import BlogCard from "../../Components/BlogCard/BlogCard";
 // import Pagination from "../../Components/Pagination/Pagination";
 import Modal from "../../Components/Modal/Modal";
+import { useLazyAxiosGet } from "../../Services/axiosHook";
 
 const Home = () => {
-  const [data, setData] = useState([]);
+  const [blogCards, setBlogCards] = useState([]);
   // const [currentPage, setCurrentPage] = useState(1);
   // const [blogsPerPage] = useState(4);
   const [showDeleteModal, setShowDeteleModal] = useState(false);
   const [currentBlogId, setCurrentBlogId] = useState(null);
 
+  const {
+    fetchData: getBlogCardsData,
+    loading,
+  } = useLazyAxiosGet("http://localhost:5000/blogs", {
+    onComplete: (data) => {
+      setBlogCards(data)
+      setShowDeteleModal(false);
+      setCurrentBlogId(null);
+    },
+    onError: () => {
+      toast.error("Something went wrong. Try again later");
+      setShowDeteleModal(false);
+      setCurrentBlogId(null);
+    }
+  });
+
   const deleteHandler = async (id) => {
     const response = await axios.delete(`http://localhost:5000/blogs/${id}`);
     if (response.status === 200) {
       toast.success("Blog deleted successfully");
-      bringBlogData();
+      getBlogCardsData();
     } else {
       toast.error("Something went wrong, try again later");
     }
@@ -31,19 +48,8 @@ const Home = () => {
   };
 
   useEffect(() => {
-    bringBlogData();
+    getBlogCardsData();
   }, []);
-
-  const bringBlogData = async () => {
-    const response = await axios.get("http://localhost:5000/blogs");
-    if (response.status === 200) {
-      setData(response.data);
-    } else {
-      toast.error("Something went wrong, try again later");
-    }
-    setShowDeteleModal(false);
-    setCurrentBlogId(null)
-  };
 
   // //Get Current Post
   // const indexOfLastBlog = currentPage * blogsPerPage;
@@ -57,11 +63,13 @@ const Home = () => {
     setShowDeteleModal(true);
     setCurrentBlogId(id); //
   };
-  return (
+
+  if (loading) {
+    return <span>Loading...</span>;
+  }
+
+  return blogCards.length !== 0 ? (
     <React.Fragment>
-      {data.length === 0 && (
-        <div className="noBlogFound">No blog was found... Try again later</div>
-      )}
       <h4 className="welcomeHome-msg">
         Welcome! Here you see all the blogs people wrote about the city of
         Porto.
@@ -70,10 +78,10 @@ const Home = () => {
       </h4>
       <div className="home-container">
         <div className="homeShowBlog">
-          {data.map((item, index) => (
+          {blogCards.map((blogCard, index) => (
             <BlogCard
               key={index}
-              {...item}
+              {...blogCard}
               showMore={showMore}
               deleteHandler={(id) => handleDelete(id)}
             />
@@ -96,6 +104,8 @@ const Home = () => {
         <p>This action can't be undone!</p>
       </Modal>
     </React.Fragment>
+  ) : (
+    <div className="noBlogFound">No blog was found... Try again later</div>
   );
 };
 

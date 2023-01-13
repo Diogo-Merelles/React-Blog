@@ -3,8 +3,8 @@ import "./RegisterCard.css";
 import { Link, useNavigate } from "react-router-dom";
 import { errorCheck } from "../../Services/validate";
 import registerImg from "../../Images/clerigos.jpeg";
-import axios from "axios";
 import { toast } from "react-toastify";
+import { useAxiosPost } from "../../Services/axiosHook";
 
 const initualUserState = {
   firstName: "",
@@ -25,6 +25,16 @@ const RegisterCard = () => {
     passwordError: "",
   });
 
+  const { updateData, loading } = useAxiosPost("http://localhost:5000/user", {
+    onComplete: (data) => {
+      toast.success("Congratulation! You just created an account");
+      navigate("/login");
+    },
+    onError: () => {
+      toast.error("Sorry, something went wrong. Try again later");
+    },
+  });
+
   const inputHandler = (ev) => {
     setFormUser((prevState) => ({
       ...prevState,
@@ -43,25 +53,15 @@ const RegisterCard = () => {
     }));
   };
 
-  const handleSubmit = async () => {
-
+  const handleSubmit = () => {
     if (firstName && lastName && email && password) {
-    const  updatedUser = {...formUser}
-    const response = await axios.post("http://localhost:5000/user", updatedUser);
-
-    if (response.status === 201) {
-      toast.success("Congratulation! You just created an account");
-
-    } else {
-      toast.error("Sorry, something went wrong. Try again later");
-    }
-    // setFormUser({firstName: "", lastName: "", email: "", password: ""});
-    navigate("/login");
+      const updatedUser = { ...formUser };
+      updateData(updatedUser);
     }
   };
 
   return (
-    <form className="registerLayout" onSubmit={handleSubmit}>
+    <form className="registerLayout">
       <div className="right-side-form">
         <img
           src={registerImg}
@@ -85,6 +85,7 @@ const RegisterCard = () => {
               className="basicInput"
               onChange={inputHandler}
               onBlur={(ev) => errorHandler(ev)}
+              disabled={loading}
             />
             <div className="errorMsg">{userError.firstNameError}</div>
 
@@ -97,6 +98,7 @@ const RegisterCard = () => {
               value={lastName}
               onChange={inputHandler}
               onBlur={(ev) => errorHandler(ev)}
+              disabled={loading}
             />
             <div className="errorMsg">{userError.lastNameError}</div>
           </div>
@@ -110,6 +112,7 @@ const RegisterCard = () => {
             value={email}
             onChange={inputHandler}
             onBlur={(ev) => errorHandler(ev)}
+            disabled={loading}
           />
           <div className="errorMsg">{userError.emailError}</div>
 
@@ -122,9 +125,15 @@ const RegisterCard = () => {
             value={password}
             onChange={inputHandler}
             onBlur={(ev) => errorHandler(ev)}
+            disabled={loading}
           />
           <div className="errorMsg">{userError.passwordError}</div>
-          <button type="submit" className="basicInput createAccBtn">
+          <button
+            onClick={handleSubmit}
+            disabled={loading}
+            type="submit"
+            className="basicInput createAccBtn"
+          >
             Create Account
           </button>
         </div>

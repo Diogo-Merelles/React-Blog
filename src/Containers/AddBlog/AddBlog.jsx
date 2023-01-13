@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
   MDBValidation,
@@ -8,24 +8,52 @@ import {
   MDBFile,
 } from "mdb-react-ui-kit";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./AddBlog.css";
 
 const initialState = {
   title: "",
   description: "",
   category: "",
-  imageUrl: ""
+  imageUrl: "",
 };
 
-const options = ["Historic Buildings", "Sights", "Food", "Wine House", "Douro River", "Art"];
+const options = [
+  "Historic Buildings",
+  "Sights",
+  "Food",
+  "Wine House",
+  "Douro River",
+  "Art",
+];
 
 const AddBlog = () => {
   const [formValue, setFormValue] = useState(initialState);
   const [categoryErr, setCategoryErr] = useState(null);
+  const [editBlog, setEditBlog] = useState(false);
   const { title, description, category, imageUrl } = formValue;
 
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (id) {
+      setEditBlog(true);
+      getSingleBlog(id);
+    } else {
+      setEditBlog(false);
+      setFormValue({ ...initialState });
+    }
+  }, [id]);
+
+  const getSingleBlog = async (id) => {
+    const singleBlog = await axios.get(`http://localhost:5000/blogs/${id}`);
+    if (singleBlog.status === 200) {
+      setFormValue({ ...singleBlog.data });
+    } else {
+      toast.error("Something went wrong, please try again later");
+    }
+  };
 
   const getDate = () => {
     let today = new Date();
@@ -41,18 +69,32 @@ const AddBlog = () => {
     if (!category) {
       setCategoryErr("Please select a category");
     }
-    if (title && description && imageUrl && category) {
+    if ({ ...formValue }) {
       const currentDate = getDate();
-      const updatedBlogDate = { ...formValue, date: currentDate };
-      const response = await axios.post(
-        "http://localhost:5000/blogs",
-        updatedBlogDate
-      );
-
-      if (response.status === 201) {
-        toast.success("Successfully created a new Blog!");
+      
+      if(!editBlog) {
+        const updatedBlogDate = { ...formValue, date: currentDate };
+        const response = await axios.post(
+          "http://localhost:5000/blogs",
+          updatedBlogDate
+        );
+  
+        if (response.status === 201) {
+          toast.success("Successfully created a new Blog!");
+        } else {
+          toast.error("Something went wrong :( Try again later");
+        }
       } else {
-        toast.error("Something went wrong :( Try again later");
+        const response = await axios.put(
+          `http://localhost:5000/blogs/${id}`,
+          formValue
+        );
+  
+        if (response.status === 200) {
+          toast.success("Successfully updated Blog!");
+        } else {
+          toast.error("Something went wrong :( Try again later");
+        }
       }
       setFormValue({ title: "", description: "", category: "", imageUrl: "" });
       navigate("/");
@@ -63,7 +105,6 @@ const AddBlog = () => {
     let { name, value } = ev.target;
     setFormValue({ ...formValue, [name]: value });
   };
-
 
   const onUploadImage = (file) => {
     let formData = new FormData();
@@ -87,9 +128,12 @@ const AddBlog = () => {
 
   return (
     <MDBValidation className="row g-3" onSubmit={handleSubmit}>
-      <p className="fs-1 fw-bold">Tell us what about your favorite thing in Porto!</p>
-      <p className="fs-3 fw-bold">Create your blog</p>
-      <div className="layout"
+      <p className="fs-1 fw-bold">
+        Tell us what about your favorite thing in Porto!
+      </p>
+      <p className="fs-3 fw-bold">{editBlog ? "Edit your blog" : "Create your blog"}</p>
+      <div
+        className="layout"
         style={{
           display: "flex",
           flexDirection: "column",
@@ -98,8 +142,7 @@ const AddBlog = () => {
           padding: "2em",
           maxWidth: "26em",
           alignContent: "center",
-          border: "8px solid rgb(137, 171, 227, 0.6)"
-
+          border: "8px solid rgb(137, 171, 227, 0.6)",
         }}
       >
         <MDBInput
@@ -126,16 +169,6 @@ const AddBlog = () => {
           rows={4}
         />
         <br />
-        {/* <MDBInput 
-          defaultValue={imageUrl || ""}
-          name="imageUrl"
-          type="url"
-          onChange={onUploadImage}
-          required
-          label="Url of your image"
-          validation="You need to provide a valid url"
-          invalid="true"
-        /> */}
         <MDBFile
           label="Choose an image for your blog!"
           type="file"
@@ -166,7 +199,7 @@ const AddBlog = () => {
             className="btn btn-primary btn-lg"
             style={{ marginRight: "0.8em" }}
           >
-            Add your blog
+            {editBlog ? "Update Blog" : "Add blog"}
           </MDBBtn>
           <MDBBtn
             className="btn btn-danger btn-lg"

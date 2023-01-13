@@ -21,7 +21,6 @@ const SearchBar = ({isOpen, onClick}) => {
   useEffect(() => {
     async function fecthData() {
       let response = await getSearchedBlogs(searchInput);
-      console.log(response);
       setBlogs(response.data);
     }
     fecthData();
@@ -39,9 +38,7 @@ const SearchBar = ({isOpen, onClick}) => {
         id="input"
         title="input"
         placeholder="Search"
-        onChange={(ev) => {
-          handleSearchInput(ev)
-        }}
+        onChange={handleSearchInput}
         value={searchInput}
         />
         </div>

@@ -1,28 +1,12 @@
 {
   "blogs": [
     {
-      "title": "Some title examples 4",
-      "description": "asdasdasdasdasdasdasdasdasdalkjslkjaslkjdalksjdlkajsdlkajslkdjaslkdjalksjdklasjdklajsdkljasdlkjaslkdjaslkjdaslkjdalksjd",
-      "category": "Food",
-      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1672925765/zew3poepnh3zyp2fxaih.jpg",
-      "date": "05/01/2023",
-      "id": 8
-    },
-    {
-      "title": "Tile exmaple 5 ",
+      "title": "Some ChANGED 2 TITLE",
       "description": "lkjhsdlkjhsdlkfjhsdlkfjsldkjfslkdjflskdjflksjdflksjdflksjdflkjsdklfjsldkfjslkdjflksdjflksjdflkjsdlkfjslkdjslkjslkjdslkjsdfsdf",
       "category": "Art",
-      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1672926205/yl9flnwoosvhr8rbsle1.jpg",
+      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673611183/qhgg9rkm91bwp3nlzxed.webp",
       "date": "05/01/2023",
       "id": 9
-    },
-    {
-      "title": "Some blog title 6",
-      "description": "Some descrioption abou lorem ipsum catahalocis goivanbniu amareasdsdsdasdasdasdasdasdasdasdasdasdasdasd",
-      "category": "Food",
-      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673001281/t3qewxnnwsl1lxqmarf2.jpg",
-      "date": "06/01/2023",
-      "id": 10
     },
     {
       "title": "dfgdfgdfgdfgdf",
@@ -31,6 +15,14 @@
       "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673014153/rv0ze9abgapxpwaiixgt.png",
       "date": "06/01/2023",
       "id": 11
+    },
+    {
+      "title": "asdasdasd",
+      "description": "asdasdasd",
+      "category": "Food",
+      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673631524/wuzjvcbmjbk9q6hfsmls.webp",
+      "date": "13/01/2023",
+      "id": 13
     }
   ],
   "user": [
@@ -61,6 +53,104 @@
       "email": "diogo.merelles.faria@gmail.com",
       "password": "aASDCXVXCVXC123435",
       "id": 4
+    },
+    {
+      "firstName": "Diogo",
+      "lastName": "fara",
+      "email": "some@mail.com",
+      "password": "fghfgfg456",
+      "id": 5
+    },
+    {
+      "firstName": "Diogo",
+      "lastName": "d",
+      "email": "diogo.merelles.faria@gmail.com",
+      "password": "sdsdsd2323",
+      "id": 6
+    },
+    {
+      "firstName": "d",
+      "lastName": "fara",
+      "email": "some@mail.com",
+      "password": "qweqweqw232",
+      "id": 7
+    },
+    {
+      "firstName": "d",
+      "lastName": "d",
+      "email": "some@mail.com",
+      "password": "wwqeqweqwe23",
+      "id": 8
+    },
+    {
+      "firstName": "Diogo",
+      "lastName": "fara",
+      "email": "some@mail.com",
+      "password": "qweqweqwe23",
+      "id": 9
+    },
+    {
+      "firstName": "qweqweqwe",
+      "lastName": "Faria",
+      "email": "diogo.merelles.faria@gmail.com",
+      "password": "asdasd23",
+      "id": 10
+    },
+    {
+      "firstName": "qweqweqwe",
+      "lastName": "qweqweqwe",
+      "email": "some@mail.com",
+      "password": "asdasdasd23",
+      "id": 11
+    },
+    {
+      "firstName": "Diogo",
+      "lastName": "Faria",
+      "email": "some@mail.com",
+      "password": "qweqweqwe2",
+      "id": 12
+    },
+    {
+      "firstName": "Diogo",
+      "lastName": "fara",
+      "email": "diogo.merelles.faria@gmail.com",
+      "password": "ewrwerew34",
+      "id": 13
+    },
+    {
+      "firstName": "Name",
+      "lastName": "Faria",
+      "email": "some@mail.com",
+      "password": "sdfsdfsdf34",
+      "id": 14
+    },
+    {
+      "firstName": "d",
+      "lastName": "lastName",
+      "email": "some@mail.com",
+      "password": "qweqweqwe3",
+      "id": 15
+    },
+    {
+      "firstName": "Diogo",
+      "lastName": "Faria",
+      "email": "some@mail.com",
+      "password": "qweqweqwe2",
+      "id": 16
+    },
+    {
+      "firstName": "d",
+      "lastName": "d",
+      "email": "some@mail.com",
+      "password": "asdasdasd3",
+      "id": 17
+    },
+    {
+      "firstName": "d",
+      "lastName": "qweqweqwe",
+      "email": "some@mail.com",
+      "password": "qweqweqwe2",
+      "id": 18
     }
   ]
 }
