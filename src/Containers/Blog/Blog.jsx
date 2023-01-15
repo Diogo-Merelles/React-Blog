@@ -38,12 +38,12 @@ const Blog = () => {
     blogDetail && (
       <div className="single-blog-container">
         <Link to="/">Go Back</Link>
-        <div className="title">{blogDetail && blogDetail.title}</div>
-        <img src={blogDetail && blogDetail.imageUrl} alt={blogDetail.title} />
-        <div className="description">
+        <div className="title-id">{blogDetail && blogDetail.title}</div>
+        <img className="img-id" src={blogDetail && blogDetail.imageUrl} alt={blogDetail.title} />
+        <div className="description-id">
           <p>{blogDetail.description}</p>
         </div>
-        <div className="date">
+        <div className="date-id">
           {blogDetail && blogDetail.date + " | " + blogDetail.category}
         </div>
       </div>

@@ -14,21 +14,22 @@ const Home = () => {
   const [showDeleteModal, setShowDeteleModal] = useState(false);
   const [currentBlogId, setCurrentBlogId] = useState(null);
 
-  const {
-    fetchData: getBlogCardsData,
-    loading,
-  } = useLazyAxiosGet("http://localhost:5000/blogs", {
-    onComplete: (data) => {
-      setBlogCards(data)
-      setShowDeteleModal(false);
-      setCurrentBlogId(null);
-    },
-    onError: () => {
-      toast.error("Something went wrong. Try again later");
-      setShowDeteleModal(false);
-      setCurrentBlogId(null);
+
+  const { fetchData: getBlogCardsData, loading } = useLazyAxiosGet(
+    "http://localhost:5000/blogs",
+    {
+      onComplete: (data) => {
+        setBlogCards(data);
+        setShowDeteleModal(false);
+        setCurrentBlogId(null);
+      },
+      onError: () => {
+        toast.error("Something went wrong. Try again later");
+        setShowDeteleModal(false);
+        setCurrentBlogId(null);
+      },
     }
-  });
+  );
 
   const deleteHandler = async (id) => {
     const response = await axios.delete(`http://localhost:5000/blogs/${id}`);

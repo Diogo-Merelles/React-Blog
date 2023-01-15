@@ -71,29 +71,30 @@ const AddBlog = () => {
     }
     if ({ ...formValue }) {
       const currentDate = getDate();
-      
-      if(!editBlog) {
+
+      if (!editBlog) {
         const updatedBlogDate = { ...formValue, date: currentDate };
         const response = await axios.post(
           "http://localhost:5000/blogs",
           updatedBlogDate
         );
-  
-        if (response.status === 201) {
-          toast.success("Successfully created a new Blog!");
+        if (title && description && category && imageUrl) {
+          if (response.status === 201) {
+            toast.success("Successfully created a new Blog!");
+          } else {
+            toast.error("Something went wrong :( Try again later");
+          }
         } else {
-          toast.error("Something went wrong :( Try again later");
-        }
-      } else {
-        const response = await axios.put(
-          `http://localhost:5000/blogs/${id}`,
-          formValue
-        );
-  
-        if (response.status === 200) {
-          toast.success("Successfully updated Blog!");
-        } else {
-          toast.error("Something went wrong :( Try again later");
+          const response = await axios.put(
+            `http://localhost:5000/blogs/${id}`,
+            formValue
+          );
+
+          if (response.status === 200) {
+            toast.success("Successfully updated Blog!");
+          } else {
+            toast.error("Something went wrong :( Try again later");
+          }
         }
       }
       setFormValue({ title: "", description: "", category: "", imageUrl: "" });
@@ -131,7 +132,9 @@ const AddBlog = () => {
       <p className="fs-1 fw-bold">
         Tell us what about your favorite thing in Porto!
       </p>
-      <p className="fs-3 fw-bold">{editBlog ? "Edit your blog" : "Create your blog"}</p>
+      <p className="fs-3 fw-bold">
+        {editBlog ? "Edit your blog" : "Create your blog"}
+      </p>
       <div
         className="layout"
         style={{

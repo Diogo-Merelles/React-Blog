@@ -3,7 +3,6 @@ import "./SearchBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import {getSearchedBlogs} from "../../Services/apiCalls"
-import BlogCard from "../BlogCard/BlogCard";
  
 const SearchBar = ({isOpen, onClick}) => {
   const [searchInput, setSearchInput] = useState("");
@@ -42,11 +41,6 @@ const SearchBar = ({isOpen, onClick}) => {
         value={searchInput}
         />
         </div>
-        {/* {blogs?.map((blogs) => {
-          return (
-            <BlogCard key={blogs.id} />
-          )
-        })} */}
       <FontAwesomeIcon className="close-icon" icon={faXmark} onClick={() => onClick(false)} />
     </div>
   );
