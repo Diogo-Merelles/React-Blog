@@ -5,18 +5,26 @@ import {
   faRightToBracket,
   faUser,
   faMagnifyingGlass,
+  faTractor,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
+import { useAuth } from "../../Contexts/AuthContext";
+import Modal from "../Modal/Modal";
 
 const Header = () => {
+  const { loginData, logout } = useAuth();
+  const { isLoggedIn } = loginData;
+
   let navigate = useNavigate();
 
   const [searchIsActive, setSearchIsActive] = useState(false);
   const toggleSearch = () => {
     setSearchIsActive(!searchIsActive);
   };
+
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   return (
     <div className="header-container">
@@ -35,11 +43,19 @@ const Header = () => {
           icon={faUser}
           onClick={() => navigate("/register")}
         />
-        <FontAwesomeIcon
-          className="nav-icon"
-          icon={faRightToBracket}
-          onClick={() => navigate("/login")}
-        />
+        {!isLoggedIn ? (
+          <FontAwesomeIcon
+            className="nav-icon"
+            icon={faRightToBracket}
+            onClick={() => navigate("/login")}
+          />
+        ) : (
+          <FontAwesomeIcon
+            className="nav-icon"
+            icon={faTractor}
+            onClick={() => setShowLogoutModal(true)}
+          />
+        )}
         <FontAwesomeIcon
           className="nav-icon"
           icon={faIdCard}
@@ -53,6 +69,18 @@ const Header = () => {
         {/* user profile / register / login / search */}
       </div>
       <SearchBar isOpen={searchIsActive} onClick={setSearchIsActive} />
+      <Modal
+        show={showLogoutModal}
+        title="Are you sure you want to logout?"
+        confirmLabel="Logout"
+        onClose={() => setShowLogoutModal(false)}
+        onConfirm={() => {
+          logout();
+          setShowLogoutModal(false)
+          navigate("/login");
+        }}
+        btnType="danger"
+      ></Modal>
     </div>
   );
 };

@@ -35,9 +35,16 @@ const useLazyAxiosGet = (url, { onComplete, onError } = {}) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const fetchData = async () => {
+  const fetchData = async (queryParams = {}) => {
     setLoading(true);
-    const { data, error } = await get(url);
+    let queryUrl = url;
+    const params = Object.keys(queryParams)
+    if(params.length > 0) {
+      queryUrl = `${queryUrl}?${params.map(param => {
+        return `${param}=${queryParams[param]}`
+      }).join("&")}`
+    }
+    const { data, error } = await get(queryUrl);
     if (data) {
       setData(data);
       if (onComplete) {

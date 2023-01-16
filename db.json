@@ -29,7 +29,7 @@
     {
       "firstName": "Name",
       "lastName": "lastName",
-      "email": "some@mail.com",
+      "email": "some@mails.com",
       "password": "qweqweqwe2",
       "id": 1
     },
@@ -37,7 +37,7 @@
       "firstName": "Diogo",
       "lastName": "fara",
       "email": "some@mail.com",
-      "password": "jhgjhgjhg6",
+      "password": "12345abc",
       "id": 2
     }
   ]
