@@ -117,7 +117,7 @@ const AddBlog = () => {
         toast.info("Image uploaded Successfully!");
         setFormValue({ ...formValue, imageUrl: res.data.url });
       })
-      .catch((error) => {
+      .catch(() => {
         toast.error("Something went wrong :( Try again later");
       });
   };

@@ -47,41 +47,6 @@ const LoginCard = () => {
     login(email, password);
   };
 
-  // const loginSubmit = async () => {
-  //     if(validation()) {
-  //         console.log("test");
-  //         const response = await axios.get("http://localhost:5000/user" + loginUser.email, {...loginUser} );
-
-  //         if(response.status === 200) {
-  //             console.log(response.data);
-  //             console.log("test2")
-  //             if(Object.keys(response.data).length === 0) {
-  //               toast.error("User Email doesn't exist.")
-  //             } else {
-  //               if(response.password === password) {
-  //                   toast.success("Login succesfull")
-  //                   sessionStorage("email", loginUser.email);
-  //                   navigate("/")
-  //               } else {
-  //                 toast.error("Password is incorrect.")
-  //               }
-  //             }
-  //         } else {
-  //             toast.error("Something went wrong, try again later")
-  //         }
-  //     }
-  // }
-  // const validation = () => {
-  //     let result = true;
-  //     if(loginUser.email === '' || loginUser.email === null) {
-  //         result = false;
-  //     }
-  //     if(loginUser.password === '' || loginUser.password === null) {
-  //         result = false;
-  //     }
-  //     return result;
-  // }
-
   useEffect(() => {
     if(isLoggedIn) {
       navigate("/")

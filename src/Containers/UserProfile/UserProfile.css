@@ -1,0 +1,27 @@
+.login-update-form {
+    border: 8px solid rgb(137, 171, 227, 0.6);
+    width: 60%;
+    margin: 1em;
+    padding: 1em;
+  
+}
+
+.test {
+    display: flex;
+    width: 90vw;
+
+}
+
+.goBack {
+    background-color: rgb(223, 63, 63);
+}
+
+.goBack:hover {
+    background-color: rgb(255, 0, 0);
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+}
+
+.userProfileSVG {
+    height: 400px;
+    margin-left: 1em;
+}

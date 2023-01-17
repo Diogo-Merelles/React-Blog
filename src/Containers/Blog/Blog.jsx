@@ -22,16 +22,6 @@ const Blog = () => {
     }
   );
 
-  // useEffect(() => {
-  //   if (!loading) {
-  //     if (data) {
-  //       setBlogDetail(data);
-  //     } else if (error) {
-  //       toast.error("Something went wrong. Try again later");
-  //     }
-  //   }
-  // }, [data, error, loading]);
-
   if (loading) {
     return <span>Loading...</span>;
   }
