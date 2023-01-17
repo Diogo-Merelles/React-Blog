@@ -39,6 +39,13 @@
       "email": "some@mail.com",
       "password": "12345abc",
       "id": 2
+    },
+    {
+      "firstName": "FirstTest",
+      "lastName": "LastTest",
+      "email": "test@email.com",
+      "password": "test1234",
+      "id": 3
     }
   ]
 }
