@@ -1,0 +1,38 @@
+.single-blog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-id {
+    width: 90%;
+    height: 700px;
+    margin-bottom: 1em;
+}
+
+.description-id{
+    border: 8px solid rgb(137, 171, 227, 0.6);
+    width: 50%;
+    text-align: justify;
+    margin-bottom: 1em;
+    font-size: 18px;
+
+}
+
+.date-id {
+    background: #89ABE3FF;
+    width: fit-content;
+    margin-bottom: 1em;
+    font-size: x-large;
+
+}
+
+.title-id {
+    font-weight: 800;
+    font-size: xxx-large;
+}
+
+.go-back {
+    font-size: larger;
+    margin-bottom: 1em;
+}

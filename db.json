@@ -46,6 +46,13 @@
       "email": "test@email.com",
       "password": "test1234",
       "id": 3
+    },
+    {
+      "firstName": "Andre",
+      "lastName": "Costa",
+      "email": "andre@gmail.com",
+      "password": "andre123",
+      "id": 4
     }
   ]
 }

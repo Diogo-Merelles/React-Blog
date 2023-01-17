@@ -21,7 +21,7 @@ const AuthProvider = (props) => {
   const handleLoginError = () => {
     setLoginPending(false);
     setLoginSuccess(false);
-    toast.error("Something went wrong, try again later")
+    toast.error("Email and/or password is incorrect. Try again")
   };
 
   const login = async (email, password) => {
