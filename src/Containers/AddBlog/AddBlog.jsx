@@ -10,6 +10,8 @@ import {
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
 import "./AddBlog.css";
+import { useAuth } from "../../Contexts/AuthContext";
+import { useAxiosPost, useLazyAxiosGet, useAxiosPut } from "../../Services/axiosHook";
 
 const initialState = {
   title: "",
@@ -33,27 +35,49 @@ const AddBlog = () => {
   const [editBlog, setEditBlog] = useState(false);
   const { title, description, category, imageUrl } = formValue;
 
+  const { userData } = useAuth();
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const { fetchData: fetchSingleBlog } = useLazyAxiosGet(
+    `http://localhost:5000/blogs/${id}`,
+    {
+      onComplete: (data) => {
+        setFormValue({ ...data });
+      },
+      onError: () => {
+        toast.error("Something went wrong, please try again later");
+      },
+    }
+  );
+
+  const { updateData: createBlog } = useAxiosPost(`http://localhost:5000/blogs`, {
+    onComplete: () => {
+      toast.success("Successfully created a new Blog!");
+    },
+    onError: () => {
+      toast.error("Something went wrong :( Try again later");
+    },
+  });
+
+  const { updateData: updateBlogData} = useAxiosPut(`http://localhost:5000/blogs/${id}`, {
+    onComplete: () => {
+      toast.success("Successfully updated Blog!");
+    },
+    onError: () => {
+      toast.error("Something went wrong :( Try again later");
+    },
+  })
 
   useEffect(() => {
     if (id) {
       setEditBlog(true);
-      getSingleBlog(id);
+      fetchSingleBlog({ id });
     } else {
       setEditBlog(false);
       setFormValue({ ...initialState });
     }
   }, [id]);
-
-  const getSingleBlog = async (id) => {
-    const singleBlog = await axios.get(`http://localhost:5000/blogs/${id}`);
-    if (singleBlog.status === 200) {
-      setFormValue({ ...singleBlog.data });
-    } else {
-      toast.error("Something went wrong, please try again later");
-    }
-  };
 
   const getDate = () => {
     let today = new Date();
@@ -69,37 +93,20 @@ const AddBlog = () => {
     if (!category) {
       setCategoryErr("Please select a category");
     }
-    if ({ ...formValue }) {
       const currentDate = getDate();
-
       if (!editBlog) {
-        const updatedBlogDate = { ...formValue, date: currentDate };
-        const response = await axios.post(
-          "http://localhost:5000/blogs",
-          updatedBlogDate
-        );
-        if (title && description && category && imageUrl) {
-          if (response.status === 201) {
-            toast.success("Successfully created a new Blog!");
-          } else {
-            toast.error("Something went wrong :( Try again later");
-          }
-        } else {
-          const response = await axios.put(
-            `http://localhost:5000/blogs/${id}`,
-            formValue
-          );
-
-          if (response.status === 200) {
-            toast.success("Successfully updated Blog!");
-          } else {
-            toast.error("Something went wrong :( Try again later");
-          }
-        }
+        const updatedBlogPayload = {
+          ...formValue,
+          date: currentDate,
+          authorId: userData.id,
+        };
+        createBlog(updatedBlogPayload);
+      } else {
+        updateBlogData(formValue)
       }
       setFormValue({ title: "", description: "", category: "", imageUrl: "" });
       navigate("/");
-    }
+
   };
 
   const onInputChange = (ev) => {

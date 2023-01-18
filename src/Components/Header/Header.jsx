@@ -66,7 +66,6 @@ const Header = () => {
           icon={faMagnifyingGlass}
           onClick={toggleSearch}
         />
-        {/* user profile / register / login / search */}
       </div>
       <SearchBar isOpen={searchIsActive} onClick={setSearchIsActive} />
       <Modal

@@ -5,7 +5,6 @@ export const getSearchedBlogs = async (query) => {
   return response;
 };
 
-
 export const get = async (url) => {
   const response = await axios.get(url);
 
@@ -38,4 +37,21 @@ export const post = async (url, payload) => {
     }
 
     return result;
+}
+
+export const put = async (url, payload = {}) => {
+  const response = await axios.put(url, payload);
+
+  const result = {
+    data: null, 
+    error: null
+  }
+
+  if (response.status === 200) {
+    result.data = response.data
+  } else {
+    result.error = response.error
+  }
+
+  return result;
 }

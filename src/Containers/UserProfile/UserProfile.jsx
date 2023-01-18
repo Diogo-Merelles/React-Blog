@@ -46,6 +46,22 @@ const UserProfile = () => {
     passwordError: "",
   });
 
+  const {loading } = useAxiosGet(
+    `http://localhost:5000/user/${id}`,
+    {
+      onComplete: (data) => {
+        setUserProfile(data);
+      },
+      onError: () => {
+        toast.error("Something went wrong. Try again later");
+      },
+    }
+  );
+
+  if (loading) {
+    return <span>Loading...</span>;
+  }
+
   const errorHandler = (ev) => {
     let error = "";
 

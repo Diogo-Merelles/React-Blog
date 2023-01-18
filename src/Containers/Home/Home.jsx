@@ -3,17 +3,15 @@ import "./Home.css";
 import { toast } from "react-toastify";
 import axios from "axios";
 import BlogCard from "../../Components/BlogCard/BlogCard";
-// import Pagination from "../../Components/Pagination/Pagination";
 import Modal from "../../Components/Modal/Modal";
 import { useLazyAxiosGet } from "../../Services/axiosHook";
+;
 
 const Home = () => {
   const [blogCards, setBlogCards] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [blogsPerPage] = useState(4);
+
   const [showDeleteModal, setShowDeteleModal] = useState(false);
   const [currentBlogId, setCurrentBlogId] = useState(null);
-
 
   const { fetchData: getBlogCardsData, loading } = useLazyAxiosGet(
     "http://localhost:5000/blogs",
@@ -41,24 +39,9 @@ const Home = () => {
     }
   };
 
-  const showMore = (string) => {
-    if (string.length > 50) {
-      string = string.substring(0, 50) + " ... ";
-    }
-    return string;
-  };
-
   useEffect(() => {
     getBlogCardsData();
   }, []);
-
-  // //Get Current Post
-  // const indexOfLastBlog = currentPage * blogsPerPage;
-  // const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
-  // const currentBlog = data.slice(indexOfFirstBlog, indexOfLastBlog);
-
-  // //change page
-  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleDelete = (id) => {
     setShowDeteleModal(true);
@@ -83,15 +66,9 @@ const Home = () => {
             <BlogCard
               key={index}
               {...blogCard}
-              showMore={showMore}
               deleteHandler={(id) => handleDelete(id)}
             />
           ))}
-          {/* <Pagination
-            blogsPerPAge={blogsPerPage}
-            totalBlogs={data.length}
-            paginate={paginate}
-          /> */}
         </div>
       </div>
       <Modal

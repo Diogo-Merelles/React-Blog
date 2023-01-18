@@ -1,35 +1,65 @@
-import React, {useContext} from "react";
+import React from "react";
+import "./App.css";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import Home from "./Containers/Home/Home";
+import AddBlog from "./Containers/AddBlog/AddBlog";
+import Blog from "./Containers/Blog/Blog";
+import Login from "./Containers/Login/Login";
+import Register from "./Containers/Register/Register";
+import UserProfile from "./Containers/UserProfile/UserProfile";
+import ErrNotFound from "./Containers/ErrNotFound/ErrNotFound";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Header from "./Components/Header/Header";
+import { useAuth } from "./Contexts/AuthContext";
 
-import './App.css';
-import {Routes, Route, BrowserRouter} from 'react-router-dom'
-import Home from './Containers/Home/Home';
-import AddBlog from './Containers/AddBlog/AddBlog';
-import Blog from './Containers/Blog/Blog';
-import Login from './Containers/Login/Login';
-import Register from './Containers/Register/Register';
-import UserProfile from './Containers/UserProfile/UserProfile';
-import ErrNotFound from './Containers/ErrNotFound/ErrNotFound';
-import { ToastContainer } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
-import Header from './Components/Header/Header';
+const LoggedRoute = ({ user, children }) => {
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
 
 function App() {
+  const { userData } = useAuth();
   return (
     <BrowserRouter>
-    <div className="App">
-      <Header />
-      <ToastContainer />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/addBlog" element={<AddBlog />} />
-        <Route path="/editBlog/:id" element={<AddBlog />} />
-        <Route path="/blog/:id" element={<Blog />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/userProfile" element={<UserProfile />} />
-        <Route path="*" element={<ErrNotFound />} />
-      </Routes>
-    </div>
+      <div className="App">
+        <Header />
+        <ToastContainer />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/addBlog"
+            element={
+              <LoggedRoute user={userData}>
+                <AddBlog />
+              </LoggedRoute>
+            }
+          />
+          <Route
+            path="/editBlog/:id"
+            element={
+              <LoggedRoute user={userData}>
+                <AddBlog />
+              </LoggedRoute>
+            }
+          />
+          <Route path="/blog/:id" element={<Blog />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/userProfile"
+            element={
+              <LoggedRoute user={userData}>
+                <UserProfile />
+              </LoggedRoute>
+            }
+          />
+          <Route path="*" element={<ErrNotFound />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

@@ -6,7 +6,8 @@
       "category": "Wine House",
       "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673014153/rv0ze9abgapxpwaiixgt.png",
       "date": "06/01/2023",
-      "id": 11
+      "id": 11,
+      "authorId": 1
     },
     {
       "title": "asdasdasd",
@@ -14,7 +15,8 @@
       "category": "Food",
       "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673631524/wuzjvcbmjbk9q6hfsmls.webp",
       "date": "13/01/2023",
-      "id": 13
+      "id": 13,
+      "authorId": 2
     },
     {
       "title": "some blog title",
@@ -22,15 +24,26 @@
       "category": "Sights",
       "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673968484/prisxgem0qhmjzkp6tif.jpg",
       "date": "17/01/2023",
-      "id": 17
+      "id": 17,
+      "authorId": 4
     },
     {
-      "title": "Some Title about Porto",
-      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,\nmolestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum\nnumquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium\noptio, eaque rerum! Provident similique accusantium nemo autem. Veritatis\nobcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam\nnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,\ntenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,\nquia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos \nsapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam\nrecusandae alias error harum maxime adipisci amet laborum. Perspiciatis \nminima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit \nquibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur \nfugiat, temporibus enim commodi iusto libero magni deleniti quod quam \nconsequuntur! Commodi minima excepturi repudiandae velit hic maxime\ndoloremque. Quaerat provident commodi consectetur veniam similique ad \nearum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo \nfugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore \nsuscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium\nmodi minima sunt esse temporibus sint culpa, recusandae aliquam numquam \ntotam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam \nquasi aliquam eligendi, placeat qui corporis!",
+      "title": "Some tiutle ",
+      "description": "askldjalksjdklajdlkjasdlkjslkdjlakjdsasdasd",
+      "category": "Sights",
+      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1674054276/y9pzhrjro2n0slca83lk.jpg",
+      "date": "18/01/2023",
+      "authorId": 4,
+      "id": 19
+    },
+    {
+      "title": "some changeed title",
+      "description": "sdfsdfsdfsdf",
       "category": "Douro River",
-      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673968726/oljqxfilaibcx4wmepta.jpg",
-      "date": "17/01/2023",
-      "id": 18
+      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1674064689/nupepjbxpso6xjuqicnk.jpg",
+      "date": "18/01/2023",
+      "authorId": 4,
+      "id": 20
     }
   ],
   "user": [
@@ -61,6 +74,13 @@
       "email": "andre@gmail.com",
       "password": "andre123",
       "id": 4
+    },
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "doe@gmail.com",
+      "password": "doe12345",
+      "id": 5
     }
   ]
 }

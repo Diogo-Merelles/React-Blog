@@ -16,7 +16,8 @@
     text-align: justify;
     margin-bottom: 1em;
     font-size: 18px;
-
+    padding: 16px;
+    margin: 16px;
 }
 
 .date-id {
