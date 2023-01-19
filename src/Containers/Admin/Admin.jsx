@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import { useAuth } from "../../Contexts/AuthContext";
 
 const Admin = () => {
-  return (
-    <div>Admin</div>
-  )
-}
+  const { userData } = useAuth();
 
-export default Admin
+  return (
+    <ol>
+      {userData.map((user, index) => (
+        <li value={user} key={index}>
+            {userData}
+        </li>
+      ))}
+    </ol>
+  );
+};
+
+export default Admin;

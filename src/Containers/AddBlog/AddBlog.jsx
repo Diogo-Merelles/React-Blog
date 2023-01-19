@@ -93,6 +93,8 @@ const AddBlog = () => {
     if (!category) {
       setCategoryErr("Please select a category");
     }
+    if(title && description && category && imageUrl) {
+
       const currentDate = getDate();
       if (!editBlog) {
         const updatedBlogPayload = {
@@ -106,6 +108,7 @@ const AddBlog = () => {
       }
       setFormValue({ title: "", description: "", category: "", imageUrl: "" });
       navigate("/");
+    }
 
   };
 
@@ -164,6 +167,7 @@ const AddBlog = () => {
           label="Title"
           validation="You need to provide a title!"
           invalid="true"
+          className="title-input"
         />
 
         <br />
@@ -177,6 +181,7 @@ const AddBlog = () => {
           validation="You need to provide a description!"
           invalid="true"
           rows={4}
+          className="description-input"
         />
         <br />
         <MDBFile
@@ -190,7 +195,7 @@ const AddBlog = () => {
         <br />
         <select
           required
-          className="categoryDropdown"
+          className="categoryDropdown category-input"
           onChange={onCategoryChange}
           value={category}
         >
@@ -214,6 +219,7 @@ const AddBlog = () => {
           <MDBBtn
             className="btn btn-danger btn-lg"
             style={{ marginRight: "0.8em" }}
+            onClick={() => navigate('/')}
           >
             Go back
           </MDBBtn>

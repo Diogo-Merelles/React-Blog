@@ -5,7 +5,7 @@ import {
   faRightToBracket,
   faUser,
   faMagnifyingGlass,
-  faArrowRightFromBracket,
+  faDoorOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
@@ -28,9 +28,9 @@ const Header = () => {
 
   return (
     <div className="header-container">
-      <div onClick={() => navigate("/addBlog")} className="header-categories">
+      <button onClick={() => navigate("/addBlog")} className="header-action">
         Add your Blog
-      </div>
+      </button>
       <div className="header-logo">
         <h1 className="header-name" onClick={() => navigate("/")}>
           THE HIDDEN PORTO
@@ -52,7 +52,7 @@ const Header = () => {
         ) : (
           <FontAwesomeIcon
             className="nav-icon"
-            icon={faArrowRightFromBracket}
+            icon={faDoorOpen}
             onClick={() => setShowLogoutModal(true)}
           />
         )}
@@ -76,7 +76,7 @@ const Header = () => {
         onConfirm={() => {
           logout();
           setShowLogoutModal(false)
-          navigate("/login");
+          navigate("/");
         }}
         btnType="danger"
       ></Modal>

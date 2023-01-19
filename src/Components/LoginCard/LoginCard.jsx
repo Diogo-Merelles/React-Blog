@@ -3,6 +3,7 @@ import "./LoginCard.css";
 import { Link, useNavigate } from "react-router-dom";
 import { errorCheck } from "../../Services/validate";
 import { useAuth } from "../../Contexts/AuthContext";
+import Admin from '../../Containers/Admin/Admin'
 
 const initialLoginState = {
   email: "",
@@ -12,6 +13,7 @@ const initialLoginState = {
 const LoginCard = () => {
   const { loginData, login } = useAuth();
   const { isLoginPending, isLoggedIn} = loginData;
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const [loginUser, setLoginUser] = useState(initialLoginState);
   const { email, password } = loginUser;
@@ -57,6 +59,10 @@ const LoginCard = () => {
     return <span>Redirecting...</span>;
   }
 
+  if(email === "admin@gmail.com" && password === "admin123") {
+    navigate("/admin")
+  }
+
   return (
     <form className="login-form" onSubmit={onSubmit}>
       <div className="main-content">
@@ -69,7 +75,7 @@ const LoginCard = () => {
         placeholder="E-mail"
         type="email"
         name="email"
-        className="login-input"
+        className="login-input email-input"
         required
         value={email}
         onChange={inputHandler}
@@ -80,7 +86,7 @@ const LoginCard = () => {
         placeholder="Password"
         type="password"
         name="password"
-        className="login-input"
+        className="login-input password-input"
         required
         value={password}
         onChange={inputHandler}

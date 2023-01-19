@@ -5,6 +5,7 @@ import Home from "./Containers/Home/Home";
 import AddBlog from "./Containers/AddBlog/AddBlog";
 import Blog from "./Containers/Blog/Blog";
 import Login from "./Containers/Login/Login";
+import Admin from "./Containers/Admin/Admin";
 import Register from "./Containers/Register/Register";
 import UserProfile from "./Containers/UserProfile/UserProfile";
 import ErrNotFound from "./Containers/ErrNotFound/ErrNotFound";
@@ -57,6 +58,7 @@ function App() {
               </LoggedRoute>
             }
           />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<ErrNotFound />} />
         </Routes>
       </div>

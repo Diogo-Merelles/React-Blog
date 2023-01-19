@@ -16,10 +16,10 @@ const SearchBar = ({ isOpen, onClick }) => {
     }));
   };
 
-  const [searchIsActive, setSearchIsActive] = useState(false);
-  const toggleSearch = () => {
-    setSearchIsActive(!searchIsActive);
-  };
+  // const [searchIsActive, setSearchIsActive] = useState(false);
+  // const toggleSearch = () => {
+  //   setSearchIsActive(!searchIsActive);
+  // };
 
   useEffect(() => {
     async function fecthData() {
@@ -48,11 +48,6 @@ const SearchBar = ({ isOpen, onClick }) => {
         className="close-icon"
         icon={faXmark}
         onClick={() => onClick(false)}
-      />
-      <FontAwesomeIcon
-        className="nav-icon"
-        icon={faMagnifyingGlass}
-        onClick={toggleSearch}
       />
       <div className="search-show">
         {blogs.map((blog) => {

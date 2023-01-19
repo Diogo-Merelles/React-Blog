@@ -74,7 +74,7 @@ const UserProfile = () => {
   };
 
   const getProfile = async (id) => {
-    const singleProfile = await axios.get(`http://localhost:5000/user/${id}`);
+    const singleProfile = await axios.get(`http://localhost:5000/user/`);
     if (singleProfile.status === 200) {
       setUserProfile({ email, password });
     } else {

@@ -15,25 +15,37 @@
 }
 
 
-.header-name, .header-categories, .nav-icon {
+.header-name, .header-action, .nav-icon {
     transition: 0.3s;
     cursor: pointer;
     font-weight: 600;
     
 }
 
-.header-categories {
+.header-action {
     font-size: x-large;
+    background-color: #89ABE3FF;
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
 }
 
-.header-categories, .header-nav {
+.header-action, .header-nav {
     width: 288px;
 }
 
-.header-name:hover, .header-categories:hover, .nav-icon:hover {
+.header-action:hover, .nav-icon:hover {
+    transform: scale(1.1);
+}
+
+.header-name:hover, .header-action:hover, .nav-icon:hover {
     color: #89ABE3FF;
     opacity: 1;
 
+}
+
+.header-action:hover {
+    color:black;
 }
 
 .nav-icon {
