@@ -1,17 +1,27 @@
-import React from "react";
-import { useAuth } from "../../Contexts/AuthContext";
+import React, { useState } from "react";
+import { MDBListGroup, MDBListGroupItem } from "mdb-react-ui-kit";
+import { toast } from "react-toastify";
+import { useAxiosGet } from "../../Services/axiosHook";
 
 const Admin = () => {
-  const { userData } = useAuth();
+  const [allUsers, setAllUsers] = useState();
 
+  const { loading } = useAxiosGet(`http://localhost:5000/user/`, {
+    onComplete: (data) => {
+      setAllUsers(data);
+    },
+    onError: () => {
+      toast.error("Something went wrong. Try again later");
+    },
+  });
+
+  if (loading) {
+    return <span>Loading...</span>;
+  }
   return (
-    <ol>
-      {userData.map((user, index) => (
-        <li value={user} key={index}>
-            {userData}
-        </li>
-      ))}
-    </ol>
+    <MDBListGroup style={{ minWidthL: "22rem" }} light>
+        {allUsers.map((user) => (<MDBListGroupItem key={user.id}>{user.firstName}</MDBListGroupItem>))}
+    </MDBListGroup>
   );
 };
 

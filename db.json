@@ -43,35 +43,49 @@
       "lastName": "lastName",
       "email": "some@mails.com",
       "password": "qweqweqwe2",
-      "id": 1
+      "id": 1,
+      "admin": false
     },
     {
       "firstName": "Diogo",
       "lastName": "fara",
       "email": "some@mail.com",
       "password": "12345abc",
-      "id": 2
+      "id": 2,
+      "admin": false
     },
     {
       "firstName": "FirstTest",
       "lastName": "LastTest",
       "email": "test@email.com",
       "password": "test1234",
-      "id": 3
+      "id": 3,
+      "admin": false
     },
     {
       "firstName": "Andre",
       "lastName": "Costa",
       "email": "andre@gmail.com",
       "password": "andre123",
-      "id": 4
+      "id": 4,
+      "admin": false
     },
     {
       "firstName": "John",
       "lastName": "Doe",
       "email": "doe@gmail.com",
       "password": "doe12345",
-      "id": 5
+      "id": 5,
+      "admin": false
+
+    },
+    {
+      "firstName": "Admin",
+      "lastName": "Admin",
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "id": 6,
+      "admin": true
     }
   ]
 }

@@ -3,7 +3,6 @@ import "./LoginCard.css";
 import { Link, useNavigate } from "react-router-dom";
 import { errorCheck } from "../../Services/validate";
 import { useAuth } from "../../Contexts/AuthContext";
-import Admin from '../../Containers/Admin/Admin'
 
 const initialLoginState = {
   email: "",
@@ -11,9 +10,8 @@ const initialLoginState = {
 };
 
 const LoginCard = () => {
-  const { loginData, login } = useAuth();
+  const { loginData, login, userData } = useAuth();
   const { isLoginPending, isLoggedIn} = loginData;
-  const [isAdmin, setIsAdmin] = useState(false);
 
   const [loginUser, setLoginUser] = useState(initialLoginState);
   const { email, password } = loginUser;
@@ -51,16 +49,17 @@ const LoginCard = () => {
 
   useEffect(() => {
     if(isLoggedIn) {
-      navigate("/")
+      console.log(userData)
+      if(userData.admin) {
+        navigate("/admin")
+      } else {
+        navigate("/")
+      }
     }
-  }, [isLoggedIn])
+  }, [isLoggedIn, userData])
 
   if(isLoggedIn) {
     return <span>Redirecting...</span>;
-  }
-
-  if(email === "admin@gmail.com" && password === "admin123") {
-    navigate("/admin")
   }
 
   return (

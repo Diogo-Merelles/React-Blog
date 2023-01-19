@@ -38,8 +38,8 @@ const AuthProvider = (props) => {
           setLoginPending(false)
           setLoginSuccess(true)
           toast.success("You are logged in")
-          const {firstName, lastName, email, id} = user; //dont save password
-          const newUserData = {firstName, lastName, email, id}
+          const {firstName, lastName, email, id, admin} = user; //dont save password
+          const newUserData = {firstName, lastName, email, id, admin}
           localStorage.setItem('userData', JSON.stringify(newUserData))
           setUserData(newUserData)
         } else {

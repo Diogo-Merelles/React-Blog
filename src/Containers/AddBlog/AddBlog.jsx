@@ -179,7 +179,7 @@ const AddBlog = () => {
               validation="You need to provide a title!"
               invalid="true"
               className="title-input"
-              id="title-"
+              id="title-cy"
             />
 
             <br />
@@ -194,6 +194,7 @@ const AddBlog = () => {
               invalid="true"
               rows={4}
               className="description-input"
+              id="description-cy"
             />
             <br />
             <MDBFile
