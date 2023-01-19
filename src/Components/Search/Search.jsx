@@ -1,6 +1,6 @@
 import React from "react";
 
-const Search = ({ handleSearch, searchValue, onInputChange }) => {
+const Search = () => {
   return (
     <div className="search-layout">
       <form onSubmit={handleSearch}>
@@ -9,7 +9,7 @@ const Search = ({ handleSearch, searchValue, onInputChange }) => {
           className="input-search"
           placeholder="Search"
           value={searchValue}
-          onChange={onInputChange}
+          onChange={handleSearchInput}
         />
         <button type="submit">Search</button>
       </form>

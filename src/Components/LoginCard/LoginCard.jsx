@@ -75,7 +75,8 @@ const LoginCard = () => {
         placeholder="E-mail"
         type="email"
         name="email"
-        className="login-input email-input"
+        className="login-input"
+        id="email-input"
         required
         value={email}
         onChange={inputHandler}
@@ -86,7 +87,8 @@ const LoginCard = () => {
         placeholder="Password"
         type="password"
         name="password"
-        className="login-input password-input"
+        className="login-input"
+        id="password-input"
         required
         value={password}
         onChange={inputHandler}

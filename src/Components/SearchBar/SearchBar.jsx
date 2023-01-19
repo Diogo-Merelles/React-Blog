@@ -21,13 +21,13 @@ const SearchBar = ({ isOpen, onClick }) => {
   //   setSearchIsActive(!searchIsActive);
   // };
 
-  useEffect(() => {
-    async function fecthData() {
-      let response = await getSearchedBlogs(searchInput);
-      setBlogs(response.data);
-    }
-    fecthData();
-  }, [searchInput]);
+  // useEffect(() => {
+  //   async function fecthData() {
+  //     let response = await getSearchedBlogs(searchInput);
+  //     setBlogs(response.data);
+  //   }
+  //   fecthData();
+  // }, [searchInput]);
 
   return (
     <div className={`searchbar-container ${isOpen ? "opened" : "closed"}`}>

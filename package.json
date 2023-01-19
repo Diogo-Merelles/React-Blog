@@ -25,10 +25,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "e2e": "cypress run",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "cypress:open": "cypress open",
     "test": "react-scripts test",
+    "test:cy": "cypress run --browser chrome",
     "eject": "react-scripts eject",
     "server": "json-server --watch db.json --port 5000"
   },

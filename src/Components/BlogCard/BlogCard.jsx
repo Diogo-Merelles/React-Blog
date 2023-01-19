@@ -38,7 +38,7 @@ const BlogCard = ({
         {hasActions && (
             <div className="card-icons">
               <div className="edit-icon">
-                <Link to={`/editBlog/${id}`}>
+                <Link to={`/editBlog/${id}`} id={`blog-${id}-edit-action`}>
                   <FontAwesomeIcon icon={faPenToSquare} />
                 </Link>
               </div>
@@ -46,6 +46,7 @@ const BlogCard = ({
                 <FontAwesomeIcon
                   color="#D70040"
                   icon={faTrash}
+                  id={`blog-${id}-remove-action`}
                   onClick={() => deleteHandler(id)}
                 />
               </div>
@@ -56,22 +57,6 @@ const BlogCard = ({
             <span>Category: {category}</span>
             <span>Date: {date}</span>
           </div>
-          {/* {hasActions && (
-            <div className="card-icons">
-              <div className="edit-icon">
-                <Link to={`/editBlog/${id}`}>
-                  <FontAwesomeIcon icon={faPenToSquare} />
-                </Link>
-              </div>
-              <div className="trash-icon">
-                <FontAwesomeIcon
-                  color="#D70040"
-                  icon={faTrash}
-                  onClick={() => deleteHandler(id)}
-                />
-              </div>
-            </div>
-          )} */}
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ const initialState = {
 const AuthProvider = (props) => {
 
   const [loginData, setLoginData] = useState(initialState);
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("userData")) || null);
 
   const setLoginPending = (isLoginPending) => setLoginData({ isLoginPending });
   const setLoginSuccess = (isLoggedIn) => setLoginData({ isLoggedIn });
@@ -39,7 +39,9 @@ const AuthProvider = (props) => {
           setLoginSuccess(true)
           toast.success("You are logged in")
           const {firstName, lastName, email, id} = user; //dont save password
-          setUserData({firstName, lastName, email, id})
+          const newUserData = {firstName, lastName, email, id}
+          localStorage.setItem('userData', JSON.stringify(newUserData))
+          setUserData(newUserData)
         } else {
           handleLoginError();
         }
@@ -54,7 +56,8 @@ const AuthProvider = (props) => {
   const logout = () => {
     setLoginPending(false);
     setLoginSuccess(false);
-    setUserData(null)
+    setUserData(null);
+    localStorage.removeItem("userData");
   };
 
   return (

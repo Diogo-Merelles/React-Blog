@@ -1,3 +1,10 @@
+.layout-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4em;
+}
+
 .categoryDropdown {
     width: 100%;
     border-radius: 4px;
@@ -17,6 +24,10 @@
     color: red;
     text-align: left;
     font-size: 14px;
+}
+
+.addblogSVG {
+    height: 450px;
 }
 
 
