@@ -4,12 +4,10 @@ import {
   faIdCard,
   faRightToBracket,
   faUser,
-  faMagnifyingGlass,
   faDoorOpen,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import SearchBar from "../SearchBar/SearchBar";
 import { useAuth } from "../../Contexts/AuthContext";
 import Modal from "../Modal/Modal";
 
@@ -18,11 +16,6 @@ const Header = () => {
   const { isLoggedIn } = loginData;
 
   let navigate = useNavigate();
-
-  const [searchIsActive, setSearchIsActive] = useState(false);
-  const toggleSearch = () => {
-    setSearchIsActive(!searchIsActive);
-  };
 
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
@@ -61,13 +54,7 @@ const Header = () => {
           icon={faIdCard}
           onClick={() => navigate("/userProfile")}
         />
-        <FontAwesomeIcon
-          className="nav-icon"
-          icon={faMagnifyingGlass}
-          onClick={toggleSearch}
-        />
       </div>
-      <SearchBar isOpen={searchIsActive} onClick={setSearchIsActive} />
       <Modal
         show={showLogoutModal}
         title="Are you sure you want to logout?"

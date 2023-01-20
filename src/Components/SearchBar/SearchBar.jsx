@@ -21,46 +21,41 @@ const SearchBar = ({ isOpen, onClick }) => {
   //   setSearchIsActive(!searchIsActive);
   // };
 
-  // useEffect(() => {
-  //   async function fecthData() {
-  //     let response = await getSearchedBlogs(searchInput);
-  //     setBlogs(response.data);
-  //   }
-  //   fecthData();
-  // }, [searchInput]);
+  useEffect(() => {
+    async function fecthData() {
+      let response = await getSearchedBlogs(searchInput);
+      setBlogs(response.data);
+    }
+    fecthData();
+  }, [searchInput]);
 
   return (
-    <div className={`searchbar-container ${isOpen ? "opened" : "closed"}`}>
-      <div className="search-rigth-side">
-        <FontAwesomeIcon className="magnify-icon" icon={faMagnifyingGlass} />
+    <div className="searchbar-container">
+      <div className="input-container">
+        <FontAwesomeIcon className="mag-glass" size="2x" icon={faMagnifyingGlass} />
         <input
           className="searchBar"
           type="text"
           name="input"
           id="input"
           title="input"
-          placeholder="Search"
+          placeholder="Search blog..."
           onChange={(ev) => handleSearchInput(ev)}
           value={searchInput}
         />
       </div>
-      <FontAwesomeIcon
-        className="close-icon"
-        icon={faXmark}
-        onClick={() => onClick(false)}
-      />
       <div className="search-show">
         {blogs.map((blog) => {
           return (
             <div className="div" key={blog.id}></div>
-              // <BlogCard
-              // key={blog.id}
-              // title={blog.title}
-              // description={blog.description}
-              // imageUrl={blog.imageUrl}
-              // category={blog.category}
-              // date={blog.date}
-              // />
+            // <BlogCard
+            // key={blog.id}
+            // title={blog.title}
+            // description={blog.description}
+            // imageUrl={blog.imageUrl}
+            // category={blog.category}
+            // date={blog.date}
+            // />
           );
         })}
       </div>

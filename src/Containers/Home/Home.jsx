@@ -5,13 +5,19 @@ import axios from "axios";
 import BlogCard from "../../Components/BlogCard/BlogCard";
 import Modal from "../../Components/Modal/Modal";
 import { useLazyAxiosGet } from "../../Services/axiosHook";
-;
-
+import SearchBar from "../../Components/SearchBar/SearchBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 const Home = () => {
   const [blogCards, setBlogCards] = useState([]);
 
   const [showDeleteModal, setShowDeteleModal] = useState(false);
   const [currentBlogId, setCurrentBlogId] = useState(null);
+
+  const [searchIsActive, setSearchIsActive] = useState(false);
+  const toggleSearch = () => {
+    setSearchIsActive(!searchIsActive);
+  };
 
   const { fetchData: getBlogCardsData, loading } = useLazyAxiosGet(
     "http://localhost:5000/blogs",
@@ -60,8 +66,9 @@ const Home = () => {
         <br /> If you want to contribute, just go over to "Add your Blog" on the
         top. Have fun! :)
       </h4>
-      <div className="home-container">
-        <div className="homeShowBlog">
+      <SearchBar isOpen={searchIsActive} onClick={setSearchIsActive} />
+      <div className="homeShowBlog">
+        <div className="home-container">
           {blogCards.map((blogCard, index) => (
             <BlogCard
               key={index}

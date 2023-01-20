@@ -1,6 +1,7 @@
 .home-container {
     display: flex;
-    justify-content: flex-start; 
+    justify-content: space-between; 
+    flex-wrap: wrap;
 }
 
 .homeShowBlog {
@@ -10,7 +11,6 @@
     flex-wrap: wrap;
     border: 8px solid rgb(137, 171, 227, 0.6);
     padding: 1em;
-    justify-content: center;
     gap: 2em;
 }
 
