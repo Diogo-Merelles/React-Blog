@@ -5,9 +5,8 @@ import { get } from "../Services/apiCalls";
 export const AuthContext = React.createContext(null);
 
 const initialState = {
-  isLoggedIn: false,
+  isLoggedIn: !!localStorage.getItem("userData"),
   isLoginPending: false,
-  loginError: null,
 };
 
 const AuthProvider = (props) => {

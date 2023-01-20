@@ -55,3 +55,18 @@ export const put = async (url, payload = {}) => {
 
   return result;
 }
+
+export const remove = async (url) => {
+  const response = await axios.delete(url);
+  const result = {
+    data: null, 
+    error: null
+  }
+
+  if (response.status === 200) {
+    result.data = response.data;
+  } else {
+    result.error = response.error;
+  }
+  return result;
+}

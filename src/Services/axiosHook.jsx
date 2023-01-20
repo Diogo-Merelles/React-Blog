@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { get, put } from "./apiCalls";
-import { post } from "./apiCalls";
+import { get, put, post, remove } from "./apiCalls";
 
 function parseQueryParams(url, queryParams = {}) {
   let newUrl = url;
@@ -119,4 +118,30 @@ const useAxiosPut = (url, { onComplete, onError } = {}) => {
   return { updateData, data, error, loading };
 };
 
-export { useAxiosGet, useLazyAxiosGet, useAxiosPost, useAxiosPut };
+const useAxiosRemove = (url, {onComplete, onError} = {}) => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const removeData = async () => {
+    setLoading(true)
+    const { data, error } = await remove(url);
+    if (data) {
+      setData(data);
+      if (onComplete) {
+        onComplete(data);
+      }
+    }
+    if (error) {
+      setError(error);
+      if (onError) {
+        onError(error);
+      }
+    }
+    setLoading(false);
+  };
+  return { removeData, data, error, loading };
+  }
+
+
+export { useAxiosGet, useLazyAxiosGet, useAxiosPost, useAxiosPut, useAxiosRemove };

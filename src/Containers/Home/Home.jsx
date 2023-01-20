@@ -6,18 +6,13 @@ import BlogCard from "../../Components/BlogCard/BlogCard";
 import Modal from "../../Components/Modal/Modal";
 import { useLazyAxiosGet } from "../../Services/axiosHook";
 import SearchBar from "../../Components/SearchBar/SearchBar";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+
 const Home = () => {
   const [blogCards, setBlogCards] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   const [showDeleteModal, setShowDeteleModal] = useState(false);
   const [currentBlogId, setCurrentBlogId] = useState(null);
-
-  const [searchIsActive, setSearchIsActive] = useState(false);
-  const toggleSearch = () => {
-    setSearchIsActive(!searchIsActive);
-  };
 
   const { fetchData: getBlogCardsData, loading } = useLazyAxiosGet(
     "http://localhost:5000/blogs",
@@ -49,6 +44,21 @@ const Home = () => {
     getBlogCardsData();
   }, []);
 
+  useEffect(() => {
+    const getSearchData = setTimeout(() => {
+      if (searchInput) {
+        getBlogCardsData({
+          title_like: searchInput,
+          _sort: "title",
+          _order: "asc",
+        });
+      } else {
+        getBlogCardsData();
+      }
+    }, 1000);
+    return () => clearTimeout(getSearchData);
+  }, [searchInput]);
+
   const handleDelete = (id) => {
     setShowDeteleModal(true);
     setCurrentBlogId(id); //
@@ -58,6 +68,8 @@ const Home = () => {
     return <span>Loading...</span>;
   }
 
+  // console.log(searchInput);
+
   return blogCards.length !== 0 ? (
     <React.Fragment>
       <h4 className="welcomeHome-msg">
@@ -66,7 +78,12 @@ const Home = () => {
         <br /> If you want to contribute, just go over to "Add your Blog" on the
         top. Have fun! :)
       </h4>
-      <SearchBar isOpen={searchIsActive} onClick={setSearchIsActive} />
+      <SearchBar
+        value={searchInput}
+        onChange={(ev) => {
+          setSearchInput(ev.target.value);
+        }}
+      />
       <div className="homeShowBlog">
         <div className="home-container">
           {blogCards.map((blogCard, index) => (
@@ -90,7 +107,7 @@ const Home = () => {
       </Modal>
     </React.Fragment>
   ) : (
-    <div className="noBlogFound">No blog was found... Try again later</div>
+    <div>No blogs found...</div>
   );
 };
 

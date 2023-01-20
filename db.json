@@ -10,7 +10,7 @@
       "authorId": 1
     },
     {
-      "title": "asdasdasd",
+      "title": "Best something",
       "description": "asdasdasd",
       "category": "Food",
       "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673631524/wuzjvcbmjbk9q6hfsmls.webp",
@@ -39,22 +39,6 @@
   ],
   "user": [
     {
-      "firstName": "Name",
-      "lastName": "lastName",
-      "email": "some@mails.com",
-      "password": "qweqweqwe2",
-      "id": 1,
-      "admin": false
-    },
-    {
-      "firstName": "Diogo",
-      "lastName": "fara",
-      "email": "some@mail.com",
-      "password": "12345abc",
-      "id": 2,
-      "admin": false
-    },
-    {
       "firstName": "FirstTest",
       "lastName": "LastTest",
       "email": "test@email.com",
@@ -65,7 +49,7 @@
     {
       "firstName": "Andre",
       "lastName": "Costa",
-      "email": "andre@gmail.com",
+      "email": "andre1@gmail.com",
       "password": "andre123",
       "id": 4,
       "admin": false
@@ -85,6 +69,30 @@
       "password": "admin123",
       "id": 6,
       "admin": true
+    },
+    {
+      "firstName": "Antonio",
+      "lastName": "Lopes",
+      "email": "antonio@gmail.com",
+      "password": "antonio1",
+      "id": 7,
+      "admin": false
+    },
+    {
+      "firstName": "Jonhy",
+      "lastName": "Simmone",
+      "email": "jonhy@gmail.com",
+      "password": "jonhy123",
+      "id": 8,
+      "admin": false
+    },
+    {
+      "firstName": "Vaness",
+      "lastName": "Ferr",
+      "email": "vane@gmail.com",
+      "password": "vanessa123",
+      "admin": false,
+      "id": 9
     }
   ]
 }

@@ -12,7 +12,7 @@ import { useAuth } from "../../Contexts/AuthContext";
 import Modal from "../Modal/Modal";
 
 const Header = () => {
-  const { loginData, logout } = useAuth();
+  const { userData, loginData, logout } = useAuth();
   const { isLoggedIn } = loginData;
 
   let navigate = useNavigate();
@@ -31,11 +31,20 @@ const Header = () => {
         <h2 className="header-subtitle">Welcome to the ❤️ of Portugal! </h2>
       </div>
       <div className="header-nav">
-        <FontAwesomeIcon
-          className="nav-icon"
-          icon={faUser}
-          onClick={() => navigate("/register")}
-        />
+        {!isLoggedIn && (
+          <FontAwesomeIcon
+            className="nav-icon"
+            icon={faUser}
+            onClick={() => navigate("/register")}
+          />
+        )}
+        {isLoggedIn && (
+          <FontAwesomeIcon
+            className="nav-icon"
+            icon={faIdCard}
+            onClick={() => navigate(`/userProfile/${userData.id}`)}
+          />
+        )}
         {!isLoggedIn ? (
           <FontAwesomeIcon
             className="nav-icon"
@@ -49,11 +58,6 @@ const Header = () => {
             onClick={() => setShowLogoutModal(true)}
           />
         )}
-        <FontAwesomeIcon
-          className="nav-icon"
-          icon={faIdCard}
-          onClick={() => navigate("/userProfile")}
-        />
       </div>
       <Modal
         show={showLogoutModal}
@@ -62,7 +66,7 @@ const Header = () => {
         onClose={() => setShowLogoutModal(false)}
         onConfirm={() => {
           logout();
-          setShowLogoutModal(false)
+          setShowLogoutModal(false);
           navigate("/");
         }}
         btnType="danger"

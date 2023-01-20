@@ -49,7 +49,6 @@ const LoginCard = () => {
 
   useEffect(() => {
     if(isLoggedIn) {
-      console.log(userData)
       if(userData.admin) {
         navigate("/admin")
       } else {

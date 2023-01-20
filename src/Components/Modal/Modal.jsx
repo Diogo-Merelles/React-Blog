@@ -35,7 +35,6 @@ const Modal = ({
               <MDBBtn className='btn-close' color='none' onClick={onClose}></MDBBtn>
             </MDBModalHeader>
            { children && <MDBModalBody>{children}</MDBModalBody>}
-
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={onClose}>
                 {cancelLabel || "Cancel"}

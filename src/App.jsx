@@ -14,8 +14,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Header from "./Components/Header/Header";
 import { useAuth } from "./Contexts/AuthContext";
 
-const LoggedRoute = ({ user, children }) => {
-  if (!user) {
+const ProtectedRoute = ({ allow, children }) => {
+  if (!allow) {
     return <Navigate to="/login" replace />;
   }
 
@@ -23,7 +23,8 @@ const LoggedRoute = ({ user, children }) => {
 };
 
 function App() {
-  const { userData } = useAuth();
+  const { loginData } = useAuth();
+  const { isLoggedIn } = loginData;
   return (
     <BrowserRouter>
       <div className="App">
@@ -34,32 +35,46 @@ function App() {
           <Route
             path="/addBlog"
             element={
-              <LoggedRoute user={userData}>
+              <ProtectedRoute allow={isLoggedIn}>
                 <AddBlog />
-              </LoggedRoute>
+              </ProtectedRoute>
             }
           />
           <Route
             path="/editBlog/:id"
             element={
-              <LoggedRoute user={userData}>
+              <ProtectedRoute allow={isLoggedIn}>
                 <AddBlog />
-              </LoggedRoute>
+              </ProtectedRoute>
             }
           />
           <Route path="/blog/:id" element={<Blog />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route
-            path="/userProfile"
+            path="/register"
             element={
-              <LoggedRoute user={userData}>
-                <UserProfile />
-              </LoggedRoute>
+              <ProtectedRoute allow={!isLoggedIn}>
+                <Register />
+              </ProtectedRoute>
             }
           />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="*" element={<ErrNotFound />} />
+          <Route
+            path="/userProfile/:id"
+            element={
+              <ProtectedRoute allow={isLoggedIn}>
+                <UserProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute allow={isLoggedIn}>
+                <Admin />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="*" element={isLoggedIn ? <Navigate to="/" replace /> : <Navigate to="/login" replace /> } />
         </Routes>
       </div>
     </BrowserRouter>

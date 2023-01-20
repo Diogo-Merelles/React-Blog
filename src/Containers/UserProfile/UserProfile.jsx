@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./UserProfile.css";
 import { toast } from "react-toastify";
-import { useAxiosGet } from "../../Services/axiosHook";
+import { useLazyAxiosGet } from "../../Services/axiosHook";
 import { useAuth } from "../../Contexts/AuthContext";
 import { errorCheck } from "../../Services/validate";
 import { useNavigate, useParams, Link } from "react-router-dom";
@@ -35,7 +35,7 @@ const UserProfile = () => {
   useEffect(() => {
     if (id) {
       setEditProfile(true);
-      getProfile(id);
+      getUserProfile();
     } else {
       setEditProfile(false);
     }
@@ -46,7 +46,7 @@ const UserProfile = () => {
     passwordError: "",
   });
 
-  const {loading } = useAxiosGet(
+  const {fetchData: getUserProfile ,loading } = useLazyAxiosGet(
     `http://localhost:5000/user/${id}`,
     {
       onComplete: (data) => {
@@ -57,10 +57,6 @@ const UserProfile = () => {
       },
     }
   );
-
-  if (loading) {
-    return <span>Loading...</span>;
-  }
 
   const errorHandler = (ev) => {
     let error = "";
@@ -73,24 +69,16 @@ const UserProfile = () => {
     }));
   };
 
-  const getProfile = async (id) => {
-    const singleProfile = await axios.get(`http://localhost:5000/user/`);
-    if (singleProfile.status === 200) {
-      setUserProfile({ email, password });
-    } else {
-      toast.error("Something went wrong, try again later");
-    }
-  };
-
-  const userHandleSubmit = async () => {
+  const userHandleSubmit = async (e) => {
+    e.preventDefault();
     if (email && password) {
       const response = await axios.put(
         `http://localhost:5000/user/${id}`,
-        userProfile
+        {...userProfile, email, password}
       );
 
       if (response.status === 200) {
-        toast.success("Successfully updated Blog!");
+        toast.success("Successfully updated Profile!");
       } else {
         toast.error("Something went wrong :( Try again later");
       }
@@ -99,11 +87,15 @@ const UserProfile = () => {
     navigate("/");
   };
 
+  if (loading) {
+    return <span>Loading...</span>;
+  }
+  
   return (
     userProfile && (
       <>
       <div className="test">
-        <form className="login-update-form">
+        <form className="login-update-form" onSubmit={userHandleSubmit}>
           <div className="main-content">
             <h1>Update Credentials</h1>
           </div>
@@ -139,7 +131,6 @@ const UserProfile = () => {
             <button
               type="submit"
               className="basicInput createAccBtn"
-              onSubmit={userHandleSubmit}
               onClick={() => setShowLogoutModal(true)}
             >
               Confirm changes
