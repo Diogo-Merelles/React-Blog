@@ -70,3 +70,14 @@ export const remove = async (url) => {
   }
   return result;
 }
+
+export const deleteUser = async (url, currentUserId) => {
+  const response = await axios.delete(url, + `/${currentUserId}`);
+  return response;
+  
+}
+
+export const deleteBlog = async (url, id) => {
+  const response = await axios.delete(url, + `/${id}`);
+  return response;
+}

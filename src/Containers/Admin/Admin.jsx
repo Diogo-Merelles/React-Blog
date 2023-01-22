@@ -2,19 +2,26 @@ import React, { useEffect, useState } from "react";
 import "./Admin.css";
 import { MDBListGroup, MDBListGroupItem } from "mdb-react-ui-kit";
 import { toast } from "react-toastify";
-import { useLazyAxiosGet } from "../../Services/axiosHook";
+import { useAxiosRemove, useLazyAxiosGet } from "../../Services/axiosHook";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHammer, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../../Components/Modal/Modal";
 import axios from "axios";
+import { useAuth } from "../../Contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { deleteUser } from "../../Services/apiCalls";
 
 const Admin = () => {
   const [allUsers, setAllUsers] = useState([]);
   const [currentUserId, setCurrentUserId] = useState(null)
   const [showDeleteModal, setShowDeteleModal] = useState(false);
+  const navigate = useNavigate();
+
+  const { userData } = useAuth()
+
 
   const deleteHandler = async () => {
-    const response = await axios.delete(`http://localhost:5000/user/${currentUserId}`);
+    const response = await deleteUser(`http://localhost:5000/user/${currentUserId}`);
     if (response.status === 200) {
       toast.success("User deleted successfully");
       setShowDeteleModal(false);
@@ -23,6 +30,7 @@ const Admin = () => {
       toast.error("Something went wrong, try again later");
     }
   };
+
 
   const { fetchData: getUsers ,loading } = useLazyAxiosGet(`http://localhost:5000/user/`, {
     onComplete: (data) => {
@@ -44,6 +52,12 @@ const Admin = () => {
   if (loading) {
     return <span>Loading...</span>;
   }
+
+  if (userData.admin === false) {
+    navigate("/");
+  }
+
+  
   return allUsers.length > 0 ? (
     <>
       <MDBListGroup className="d-flex flex-wrap justify-content-center align-items-center" horizontal style={{minWidthL: "22rem" }} light>
@@ -73,7 +87,6 @@ const Admin = () => {
                   setShowDeteleModal(true);
                 }}
               />
-              <FontAwesomeIcon size="lg" icon={faHammer} />
             </div>
           </MDBListGroupItem>
         ))}

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./UserProfile.css";
 import { toast } from "react-toastify";
 import { useLazyAxiosGet } from "../../Services/axiosHook";
-import { useAuth } from "../../Contexts/AuthContext";
 import { errorCheck } from "../../Services/validate";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import Modal from "../../Components/Modal/Modal";
 import axios from "axios";
 import userProfileSVG from "../../Images/undraw_profile_re_4a55.svg";
@@ -143,12 +142,10 @@ const UserProfile = () => {
             btnType="primary"
             onClose={() => setShowLogoutModal(false)}
             onConfirm={() => {
-              // logout();
               setShowLogoutModal(false);
               navigate("/");
             }}
           />
-          {/* {isLoginPending && <div>Please wait...</div>} */}
         </form>
         <img
           className="userProfileSVG"

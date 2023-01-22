@@ -19,15 +19,6 @@
       "authorId": 2
     },
     {
-      "title": "Some tiutle ",
-      "description": "askldjalksjdklajdlkjasdlkjslkdjlakjdsasdasd",
-      "category": "Sights",
-      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1674054276/y9pzhrjro2n0slca83lk.jpg",
-      "date": "18/01/2023",
-      "authorId": 4,
-      "id": 19
-    },
-    {
       "title": "Best Francesinha EVER",
       "description": "Yes, so basically is very good!",
       "category": "Food",
@@ -35,31 +26,24 @@
       "date": "20/01/2023",
       "authorId": 4,
       "id": 20
+    },
+    {
+      "title": "Best views in Porto City",
+      "description": "Some descirption random ",
+      "category": "Sights",
+      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1674406022/xkaetvjti6dgv3x4bdoi.jpg",
+      "date": "22/01/2023",
+      "authorId": 4,
+      "id": 21
     }
   ],
   "user": [
     {
-      "firstName": "FirstTest",
-      "lastName": "LastTest",
-      "email": "test@email.com",
-      "password": "test1234",
-      "id": 3,
-      "admin": false
-    },
-    {
       "firstName": "Andre",
       "lastName": "Costa",
-      "email": "andre1@gmail.com",
+      "email": "andre@gmail.com",
       "password": "andre123",
       "id": 4,
-      "admin": false
-    },
-    {
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "doe@gmail.com",
-      "password": "doe12345",
-      "id": 5,
       "admin": false
     },
     {
@@ -69,22 +53,6 @@
       "password": "admin123",
       "id": 6,
       "admin": true
-    },
-    {
-      "firstName": "Antonio",
-      "lastName": "Lopes",
-      "email": "antonio@gmail.com",
-      "password": "antonio1",
-      "id": 7,
-      "admin": false
-    },
-    {
-      "firstName": "Jonhy",
-      "lastName": "Simmone",
-      "email": "jonhy@gmail.com",
-      "password": "jonhy123",
-      "id": 8,
-      "admin": false
     },
     {
       "firstName": "Vaness",

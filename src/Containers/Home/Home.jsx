@@ -6,6 +6,7 @@ import BlogCard from "../../Components/BlogCard/BlogCard";
 import Modal from "../../Components/Modal/Modal";
 import { useLazyAxiosGet } from "../../Services/axiosHook";
 import SearchBar from "../../Components/SearchBar/SearchBar";
+import { deleteBlog } from "../../Services/apiCalls";
 
 const Home = () => {
   const [blogCards, setBlogCards] = useState([]);
@@ -31,7 +32,7 @@ const Home = () => {
   );
 
   const deleteHandler = async (id) => {
-    const response = await axios.delete(`http://localhost:5000/blogs/${id}`);
+    const response = await deleteBlog(`http://localhost:5000/blogs/${id}`);
     if (response.status === 200) {
       toast.success("Blog deleted successfully");
       getBlogCardsData();
@@ -39,6 +40,7 @@ const Home = () => {
       toast.error("Something went wrong, try again later");
     }
   };
+
 
   useEffect(() => {
     getBlogCardsData();
@@ -61,7 +63,7 @@ const Home = () => {
 
   const handleDelete = (id) => {
     setShowDeteleModal(true);
-    setCurrentBlogId(id); //
+    setCurrentBlogId(id);
   };
 
   if (loading) {
@@ -107,7 +109,7 @@ const Home = () => {
       </Modal>
     </React.Fragment>
   ) : (
-    <div>No blogs found...</div>
+    <div>{getBlogCardsData()}</div>
   );
 };
 

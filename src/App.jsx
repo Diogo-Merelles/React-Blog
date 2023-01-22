@@ -8,7 +8,6 @@ import Login from "./Containers/Login/Login";
 import Admin from "./Containers/Admin/Admin";
 import Register from "./Containers/Register/Register";
 import UserProfile from "./Containers/UserProfile/UserProfile";
-import ErrNotFound from "./Containers/ErrNotFound/ErrNotFound";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./Components/Header/Header";

@@ -162,7 +162,6 @@ const AddBlog = () => {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              // margin: "auto",
               padding: "2em",
               maxWidth: "26em",
               alignContent: "center",
