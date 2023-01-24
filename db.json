@@ -60,6 +60,14 @@
       "password": "felipe1234",
       "admin": false,
       "id": 10
+    },
+    {
+      "firstName": "Maria",
+      "lastName": "Baltar",
+      "email": "maria@gmail.com",
+      "password": "maria123",
+      "admin": false,
+      "id": 11
     }
   ]
 }

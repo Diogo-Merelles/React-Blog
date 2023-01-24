@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { get, put, post, remove } from "./apiCalls";
+import { get, put, post, remove, checkEmail } from "./apiCalls";
 
 function parseQueryParams(url, queryParams = {}) {
   let newUrl = url;
@@ -72,7 +72,7 @@ const useAxiosPost = (url, { onComplete, onError } = {}) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  
   const updateData = async (payload = {}) => {
     setLoading(true);
     const { data, error } = await post(url, payload);

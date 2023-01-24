@@ -53,8 +53,8 @@ const RegisterCard = () => {
     }));
   };
 
-  const handleSubmit = () => {
-    if (firstName && lastName && email && password) {
+  const handleSubmit = async () => {
+    if (firstName && lastName && email && password) {  
       const updatedUser = { ...formUser, admin: false };
       updateData(updatedUser);
     }
