@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SearchBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import BlogCard from "../BlogCard/BlogCard";
 
 const SearchBar = ({onChange, value}) => {
 

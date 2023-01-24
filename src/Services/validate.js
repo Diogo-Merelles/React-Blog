@@ -31,8 +31,7 @@ export const errorCheck = (type, value) => {
       if (value.length < 8) {
         return "Write 8 characters at least";
       } else {
-        //Checking the password format....
-
+        
         if (!/[\d()+-]/g.test(value)) {
           return "Make sure you use letters and numbers";
         }

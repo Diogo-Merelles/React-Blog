@@ -9,16 +9,3 @@ Cypress.Commands.add(
     }).as(alias);
   }
 );
-
-Cypress.Commands.add("login", (userId = 1) => {
-  window.localStorage.setItem(
-    "userData",
-    JSON.stringify({
-      firstName: "Andre",
-      lastName: "Costa",
-      email: "andre@gmail.com",
-      password: "andre123",
-      id: userId,
-    })
-  );
-});

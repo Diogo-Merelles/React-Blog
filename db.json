@@ -1,40 +1,31 @@
 {
   "blogs": [
     {
-      "title": "dfgdfgdfgdfgdf",
-      "description": "gdfgdfgdfgdfgfdgfdgfdfgdfgdfgsfgsdgfsdfgdfgdfgdfgdfgdfgdfgdf",
-      "category": "Wine House",
-      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673014153/rv0ze9abgapxpwaiixgt.png",
-      "date": "06/01/2023",
-      "id": 11,
-      "authorId": 1
-    },
-    {
-      "title": "Best something",
-      "description": "asdasdasd",
-      "category": "Food",
-      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673631524/wuzjvcbmjbk9q6hfsmls.webp",
-      "date": "13/01/2023",
-      "id": 13,
-      "authorId": 2
-    },
-    {
       "title": "Best Francesinha EVER",
-      "description": "Yes, so basically is very good!",
+      "description": "If you have been to Porto you have certainly heard and tried a francesinha, now for the rest of you that are now thinking \"what the hell is francesinha!?\".\n\nWell, the direct translation is \"little french girl\", but don't worry, it's a sandwich. Okay, a sandwich... So what makes it special? Rumor has it that in 1963 Daniel David Silva, returned home after a couple of years living and working in France and was somewhat disappointed with women's fashion (too many pieces of clothing) he decided to do something about it.\n\nDaniel picked up the croque monsieur recipes and made some changes, he added several layers of different kinds of meat and also a very unique spicy sauce. The sauce was so spicy the Portuguese women started to take their clothes off, therefore it was a huge hit!\n\nAs the francesinha was created in Porto it has become a very popular local dish, so if you are coming to Porto, don´t forget to try this local delicacy.\n\nHere are a few of the best places;",
       "category": "Food",
-      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1674207152/cdsciozse5740vw7sttj.jpg",
+      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1674469049/skus7khda4pt8cwlz6hi.jpg",
       "date": "20/01/2023",
       "authorId": 4,
       "id": 20
     },
     {
       "title": "Best views in Porto City",
-      "description": "Some descirption random ",
+      "description": "Porto has become a very popular destination lately and definitely is one of the most beautiful cities in Europe. Located on the banks of the Douro River, it’s a very hilly city and that gives you the chance to enjoy breathtaking views from different places around the city. We’ve made a list of the best viewpoints in Porto for your next trip.\n\nProbably the best place to enjoy the view of Porto and Gaia. The Vitória viewpoint is located in the old Jewish Quarter, close to the Church of Our Lady of Victory and the Clérigos Tower.\n\nFrom this viewpoint you can admire the Douro River and the houses of Ribeira (Porto’s oldest neighborhood), Sé Cathedral, the Episcopal Palace, D Luis I bridge and the Port wine cellars on the shores of Gaia.\n\nThis is the highest viewpoint in Porto (76m high to be more precise) and it offers an incredible 360 view of the city. There is one catch though. To enjoy it, you have to climb 225 steps of a narrow tower that gets narrower as you climb up, with people coming up and down at the same time so if you are claustrophobic, it’s not recommend. Be aware that in the summer months, the line can be an hour long.",
       "category": "Sights",
-      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1674406022/xkaetvjti6dgv3x4bdoi.jpg",
+      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1674469394/xoavjsxsqukonjyc7vse.jpg",
       "date": "22/01/2023",
       "authorId": 4,
       "id": 21
+    },
+    {
+      "title": "Clerigos Tower",
+      "description": "In the 18th century, the religious brotherhood of the “poor clerics” (“Clérigos pobres” in Portuguese) received the donation of a vast plot of land in the center of Porto and entrusted Italian architect Niccoló Nasoni with the construction of a church In the city center.\n\nConstruction work on the Clerigos Church (Igreja dos Clérigos) began in 1735 and ended in 1748. But the brotherhood’s projects did not end there. Two years later, in 1750, the clerics asked Niccoló Nasoni to build two monumental towers adjoining the church, modeled on Tuscan bell towers.\n\nOnly one of the two towers was ultimately erected. Completed in 1763, the 75.60-meter-high Clerigos Tower (Torre dos Clerigos) is the highest tower in Portugal. It even guided the ships returning to the port of Porto, much like a lighthouse.",
+      "category": "Historic Buildings",
+      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1674469488/vjvfkhj6ztltamqaqado.jpg",
+      "date": "23/01/2023",
+      "authorId": 4,
+      "id": 22
     }
   ],
   "user": [
@@ -61,6 +52,14 @@
       "password": "vanessa123",
       "admin": false,
       "id": 9
+    },
+    {
+      "firstName": "Felipe",
+      "lastName": "Silva",
+      "email": "felipe1@gmail.com",
+      "password": "felipe1234",
+      "admin": false,
+      "id": 10
     }
   ]
 }

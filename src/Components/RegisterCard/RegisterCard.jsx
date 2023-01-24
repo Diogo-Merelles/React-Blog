@@ -86,6 +86,7 @@ const RegisterCard = () => {
               onChange={inputHandler}
               onBlur={(ev) => errorHandler(ev)}
               disabled={loading}
+              id="firstName-input"
             />
             <div className="errorMsg">{userError.firstNameError}</div>
 
@@ -99,6 +100,7 @@ const RegisterCard = () => {
               onChange={inputHandler}
               onBlur={(ev) => errorHandler(ev)}
               disabled={loading}
+              id="lastName-input"
             />
             <div className="errorMsg">{userError.lastNameError}</div>
           </div>
@@ -113,6 +115,7 @@ const RegisterCard = () => {
             onChange={inputHandler}
             onBlur={(ev) => errorHandler(ev)}
             disabled={loading}
+            id="email-input"
           />
           <div className="errorMsg">{userError.emailError}</div>
 
@@ -126,6 +129,7 @@ const RegisterCard = () => {
             onChange={inputHandler}
             onBlur={(ev) => errorHandler(ev)}
             disabled={loading}
+            id="password-input"
           />
           <div className="errorMsg">{userError.passwordError}</div>
           <button

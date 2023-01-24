@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { toast } from "react-toastify";
-import axios from "axios";
 import BlogCard from "../../Components/BlogCard/BlogCard";
 import Modal from "../../Components/Modal/Modal";
 import { useLazyAxiosGet } from "../../Services/axiosHook";
@@ -45,7 +44,7 @@ const Home = () => {
   useEffect(() => {
     getBlogCardsData();
   }, []);
-
+  //search
   useEffect(() => {
     const getSearchData = setTimeout(() => {
       if (searchInput) {
@@ -69,8 +68,6 @@ const Home = () => {
   if (loading) {
     return <span>Loading...</span>;
   }
-
-  // console.log(searchInput);
 
   return blogCards.length !== 0 ? (
     <React.Fragment>

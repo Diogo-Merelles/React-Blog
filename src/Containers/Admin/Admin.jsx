@@ -6,7 +6,6 @@ import { useAxiosRemove, useLazyAxiosGet } from "../../Services/axiosHook";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../../Components/Modal/Modal";
-import axios from "axios";
 import { useAuth } from "../../Contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { deleteUser } from "../../Services/apiCalls";

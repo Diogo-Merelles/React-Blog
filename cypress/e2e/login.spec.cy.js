@@ -14,19 +14,6 @@ function setupMockServer() {
       },
     ]
   );
-  cy.setupMockServer("GET", "http://localhost:5000/blogs", "getBlogs", 200, [
-    {
-      title: "dfgdfgdfgdfgdf",
-      description:
-        "gdfgdfgdfgdfgfdgfdgfdfgdfgdfgsfgsdgfsdfgdfgdfgdfgdfgdfgdfgdf",
-      category: "Wine House",
-      imageUrl:
-        "http://res.cloudinary.com/dxaepqu6q/image/upload/v1673014153/rv0ze9abgapxpwaiixgt.png",
-      date: "06/01/2023",
-      id: 11,
-      authorId: 1,
-    },
-  ]);
 }
 
 describe("Login", () => {
