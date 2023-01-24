@@ -1,7 +1,7 @@
 function setupMockServer() {
     cy.setupMockServer(
       "POST",
-      "http://localhost:5000/user?email=test@gmail.com",
+      "http://localhost:5000/user",
       "createUser",
       201,
       [
