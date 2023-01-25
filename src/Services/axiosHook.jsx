@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { get, put, post, remove, checkEmail } from "./apiCalls";
+import { get, put, post, remove } from "./apiCalls";
 
 function parseQueryParams(url, queryParams = {}) {
   let newUrl = url;

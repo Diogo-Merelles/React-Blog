@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Admin.css";
 import { MDBListGroup, MDBListGroupItem } from "mdb-react-ui-kit";
 import { toast } from "react-toastify";
-import { useAxiosRemove, useLazyAxiosGet } from "../../Services/axiosHook";
+import { useLazyAxiosGet } from "../../Services/axiosHook";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../../Components/Modal/Modal";

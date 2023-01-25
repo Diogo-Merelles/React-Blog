@@ -68,8 +68,8 @@ const UserProfile = () => {
     }));
   };
 
-  const userHandleSubmit = async (e) => {
-    e.preventDefault();
+  const userHandleSubmit = async (ev) => {
+    ev.preventDefault();
     if (email && password) {
       const response = await axios.put(
         `http://localhost:5000/user/${id}`,

@@ -44,6 +44,7 @@ const Home = () => {
   useEffect(() => {
     getBlogCardsData();
   }, []);
+  
   //search
   useEffect(() => {
     const getSearchData = setTimeout(() => {

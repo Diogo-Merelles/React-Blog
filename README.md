@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# The Hidden Porto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![GitHub Dependencie](https://img.shields.io/badge/fortawesome-v.6.2.1-green)
+![GitHub Dependencie](https://img.shields.io/badge/cypress-12.3.0-green)
+![GitHub Dependencie](https://img.shields.io/badge/axios-1.2.1-green)
+![GitHub Dependencie](https://img.shields.io/badge/mdb--react--ui--kit-5.1.0-green)
+![GitHub Dependencie](https://img.shields.io/badge/react--router--dom-6.5.0-green)
+![GitHub Dependencie](https://img.shields.io/badge/react--toastify-9.1.1-green)
 
-## Available Scripts
+The Hidden Porto is an application that allows the users to register, login, update their credentials. The user can also create, update and delete their own blog posts. It also contains an admin page, contact me to know the credentials to login as an admin.
 
-In the project directory, you can run:
+## Using The Hidden Porto
 
-### `npm start`
+To use this project, follow these steps:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To install all dependencies:
+```
+npm i
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To run the application:
+```
+npm run dev
+```
 
-### `npm test`
+## Endpoints: 
+```
+* "/"
+* "/addBlog"
+* "/admin" (need user admin)
+* "/blog"
+* "/login"
+* "/register"
+* "/userProfile"
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Containers:
+```
+* Home.jsx
+* Admin.jsx
+* AddBlog.jsx
+* Blog.jsx
+* Login.jsx
+* Register.jsx
+* UserProfile.jsx
+```
 
-### `npm run build`
+## Components: 
+```
+* BlogCard.jsx
+* Header.jsx
+* LoginCard.jsx
+* RegisterCard.jsx
+* SearchBar.jsx
+* Modal.jsx
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Services:
+```
+* apiCalls.js
+* axiosHook.jsx
+* validate.js
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Context Provider:
+```
+AuthContext.jsx
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing to The Hidden Porto
 
-### `npm run eject`
+To contribute to the project, follow these steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Fork this repository.
+2. Create a branch: `git checkout -b <branch_name>`.
+3. Make your changes and commit them: `git commit -m '<commit_message>'`
+4. Push to the original branch: `git push origin React-Blog/<location>`
+5. Create the pull request.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Contact
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+If you want to contact me you can reach me at diogo.merelles.faria@gmail.com
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
