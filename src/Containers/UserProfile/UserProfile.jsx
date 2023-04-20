@@ -103,6 +103,7 @@ const UserProfile = () => {
             type="email"
             name="email"
             className="login-input"
+            id="cy-email"
             required
             value={email}
             onChange={inputHandler}
@@ -114,6 +115,7 @@ const UserProfile = () => {
             type="password"
             name="password"
             className="login-input"
+            id="cy-password"
             required
             value={password}
             onChange={inputHandler}
@@ -130,6 +132,7 @@ const UserProfile = () => {
             <button
               type="submit"
               className="basicInput createAccBtn"
+              id="cy-confirmChanges"
               onClick={() => setShowLogoutModal(true)}
             >
               Confirm changes

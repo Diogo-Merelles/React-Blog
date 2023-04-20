@@ -77,6 +77,14 @@
       "password": "maria123",
       "admin": false,
       "id": 11
+    },
+    {
+      "firstName": "Update",
+      "lastName": "Profile",
+      "email": "profile@gmail.com",
+      "password": "profile123",
+      "admin": false,
+      "id": 12
     }
   ]
 }
