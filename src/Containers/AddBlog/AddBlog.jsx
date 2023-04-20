@@ -203,6 +203,7 @@ const AddBlog = () => {
               required
               validation="You need to provide an image!"
               invalid="true"
+              id="cy-file"
             />
             <br />
             <select
@@ -210,6 +211,7 @@ const AddBlog = () => {
               className="categoryDropdown category-input"
               onChange={onCategoryChange}
               value={category}
+              id="selection-cy"
             >
               <option>Select category</option>
               {options.map((option, index) => (

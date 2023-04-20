@@ -26,6 +26,15 @@
       "date": "23/01/2023",
       "authorId": 4,
       "id": 22
+    },
+    {
+      "title": "Title About food",
+      "description": "Some description about food, very intersting",
+      "category": "Food",
+      "imageUrl": "http://res.cloudinary.com/dxaepqu6q/image/upload/v1682000156/rvpebrjjymtpud3r3mty.jpg",
+      "date": "01/01/1970",
+      "authorId": 4,
+      "id": 23
     }
   ],
   "user": [

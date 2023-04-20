@@ -56,13 +56,16 @@ const Header = () => {
             className="nav-icon"
             icon={faDoorOpen}
             onClick={() => setShowLogoutModal(true)}
+            id="cy-logout"
           />
         )}
       </div>
       <Modal
+        id="modal-button-cy"
         show={showLogoutModal}
         title="Are you sure you want to logout?"
         confirmLabel="Logout"
+        type="button"
         onClose={() => setShowLogoutModal(false)}
         onConfirm={() => {
           logout();

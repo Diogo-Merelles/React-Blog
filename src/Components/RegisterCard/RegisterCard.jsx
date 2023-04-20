@@ -57,6 +57,7 @@ const RegisterCard = () => {
     if (firstName && lastName && email && password) {  
       const updatedUser = { ...formUser, admin: false };
       updateData(updatedUser);
+      navigate("/login");
     }
   };
 
